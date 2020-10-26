@@ -1,12 +1,15 @@
 import React from 'react';
 import {Tabs ,Tab} from 'react-bootstrap';
+import Groups from './homeGroups';
 
 
-export default function homeGroups() {
+export default function homeTabs() {
+
   return (
     <>
-      <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-        <Tab eventKey="groups" title="Groups">
+      <Tabs className="myClass" defaultActiveKey="groups">
+        <Tab className="tab" eventKey="groups" title="Groups">
+          <Groups />
         </Tab>
         <Tab eventKey="hosting" title="Hosting">
         </Tab>
@@ -14,3 +17,5 @@ export default function homeGroups() {
     </>
   )
 }
+
+
