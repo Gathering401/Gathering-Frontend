@@ -1,22 +1,19 @@
 import './App.css';
-import LoginPage from './components/LoginPage';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-//import Event from './components/Event';
+import {Switch,Route} from 'react-router-dom';
+import Home from './components/Home'
+import Login from './components/LoginPage';
 
 function App() {
   return (
-    <div className="justify-content-center  align-items-center">
-        <Container>
-      <Row>
-      <Col lg={5}></Col>
-        <Col lg={2}>
-        <LoginPage />
-        </Col>
-        <Col lg={5}></Col>
-      </Row>
-    </Container>
+    <div className="App">
+      <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/Login" exact>
+            <Login />
+          </Route>
+      </Switch>
     </div>
   );
 }
