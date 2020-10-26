@@ -1,0 +1,30 @@
+import React from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
+import Form from 'react-bootstrap/Form';
+import Login from './LoginPage';
+import Button from 'react-bootstrap/Button';
+
+export default function LoginForm() {
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        const { target } = e;
+
+        const { username, password } = target.elements;
+
+        if (!await Login(username.value, password.value)) {
+            target.reset();
+        }
+    }
+
+    return (
+        <Form onSubmit={handleSubmit}>
+            <Form.Group>
+                <Form.Label>Log In</Form.Label>
+                <Form.Control placeholder="Username" name="username"></Form.Control>
+                <Form.Control placeholder="Password" name="password" type="password"></Form.Control>
+                <Button type="submit">Sign In</Button>
+            </Form.Group>
+        </Form>
+    );
+}
