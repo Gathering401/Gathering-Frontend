@@ -7,9 +7,6 @@ export default function homeGroups() {
     <>
       <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
         <Tab eventKey="groups" title="Groups">
-          <TabContent>
-            <Groups></Groups>
-          </TabContent>
         </Tab>
         <Tab eventKey="hosting" title="Hosting">
         </Tab>
