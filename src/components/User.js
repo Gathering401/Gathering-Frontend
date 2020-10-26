@@ -1,5 +1,5 @@
 import React from 'react'
-import {Container, Card, Figure} from 'react-bootstrap'
+import {Container, Figure} from 'react-bootstrap'
 import logo from '../logo.svg';
 
 export default function User() {
