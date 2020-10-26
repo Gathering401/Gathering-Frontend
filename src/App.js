@@ -6,6 +6,7 @@ import Login from './components/LoginPage';
 function App() {
   return (
     <div className="App">
+      
       <Switch>
           <Route path="/" exact>
             <Home />
