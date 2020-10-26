@@ -1,6 +1,6 @@
 import React from 'react';
-import {Tabs ,Tab, TabContent} from 'react-bootstrap';
-import Groups from './homeGroups';
+import {Tabs ,Tab} from 'react-bootstrap';
+
 
 export default function homeGroups() {
   return (
