@@ -4,6 +4,7 @@ import Home from './components/Home'
 import Login from './components/LoginPage';
 import Register from './components/auth/RegisterForm';
 import Event from './components/Event';
+import EventDetail from './components/EventDetail';
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
         </Route>
         <Route path="/Event" exact>
           <Event />
+        </Route>
+        <Route path="/EventDetail" exact>
+          <EventDetail />
         </Route>
       </Switch>
     </div>
