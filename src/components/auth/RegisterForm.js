@@ -14,7 +14,6 @@ export default function Register() {
     async function handleSubmit(e) {
         e.preventDefault();
         const { target } = e;
-
         const { FirstName, LastName, Username, Password, Email, PhoneNumber, BirthDate } = target.elements;
 
         console.log(FirstName.value, LastName.value, Username.value, Password.value, Email.value, PhoneNumber.value, BirthDate.value);
