@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import CreatEvent from '../context/eventPost';
 import { Col } from 'react-bootstrap';
+import {useAuth} from '../context/auth';
+
+
+const eventAPI = 'https://gathering.azurewebsites.net/api/Event';
+
 
 
 
@@ -19,9 +23,20 @@ export default function EventForm() {
 
     const { eventName, start, end, dayOfMonth, food, cost, location } = target.elements;
 
-    if (!await CreatEvent(eventName.value, start.value, end.value, dayOfMonth.value, food.value, cost.value, location.value)) {
+    if (!await CreateEvent(eventName.value, start.value, end.value, dayOfMonth.value, food.value, cost.value, location.value)) {
       target.reset();
     }
+  }
+
+  async function CreateEvent(eventName, start, end, dayOfMonth, food, cost, location) {
+    const {user} = useAuth();
+    await fetch(`${eventAPI}/Event`, {
+      method: 'post',
+      headers: {
+        'Authorization': `Bearer ${user.token}`, 'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ eventName, start, end, dayOfMonth, food, cost, location }),
+    });
   }
 
   return (
@@ -49,21 +64,21 @@ export default function EventForm() {
 
             <Form.Group controlId="Address">
               <Form.Label>Address</Form.Label>
-              <Form.Control placeholder="Address" name="location" />
+              <Form.Control placeholder="Address" name="address" />
             </Form.Group>
 
             <Form.Row>
               <Col md={4}>
                 <Form.Group controlId="City">
                   <Form.Label>City</Form.Label>
-                  <Form.Control placeholder="City" name="location" />
+                  <Form.Control placeholder="City" name="city" />
                 </Form.Group>
               </Col>
 
               <Col md={4}>
                 <Form.Group controlId="State">
                   <Form.Label>State</Form.Label>
-                  <Form.Control name="location" as="select" defaultValue="Choose...">
+                  <Form.Control name="state" as="select" defaultValue="Choose...">
                     <option>Choose...</option>
                     <option value="">N/A</option>
                     <option value="AK">Alaska</option>
@@ -125,7 +140,7 @@ export default function EventForm() {
               <Col md={4}>
                 <Form.Group controlId="Zip">
                   <Form.Label>Zip</Form.Label>
-                  <Form.Control placeholder="Zip Code" name="location" />
+                  <Form.Control placeholder="Zip Code" name="zip" />
                 </Form.Group>
               </Col>
             </Form.Row>
