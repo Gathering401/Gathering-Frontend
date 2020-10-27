@@ -1,13 +1,14 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from 'react-bootstrap/Form';
-import Login from './LoginPage';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useAuth } from '../../context/auth';
 
 export default function LoginForm() {
+    const { login } = useAuth();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -15,7 +16,7 @@ export default function LoginForm() {
 
         const { username, password } = target.elements;
 
-        if (!await Login(username.value, password.value)) {
+        if (!await login(username.value, password.value)) {
             target.reset();
         }
     }

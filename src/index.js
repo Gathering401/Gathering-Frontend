@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
-
+import { AuthProvider } from './context/auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -12,7 +12,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+      <AuthProvider>
         <App />
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
