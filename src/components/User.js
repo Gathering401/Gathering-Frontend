@@ -18,7 +18,7 @@ export default function User() {
           src={logo}
         />
       </Figure>
-      <h3>First</h3>
+      <h3>{user === null? "First": user.username}</h3>
       <h2>Last</h2>
 
     </Container>
