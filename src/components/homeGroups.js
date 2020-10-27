@@ -1,65 +1,70 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {Card, Container,Col, Row} from 'react-bootstrap';
 import { Badge} from 'reactstrap';
 import '../App.css'
+import { useAuth } from '../context/auth';
 
 
-export default function homeGroups() {
+export default function HomeGroups() {
+  const { user } = useAuth();
+  const userAPI = 'https://gathering.azurewebsites.net/api/Group';
+  const [groups,setGroups] = useState([]);
   
+  useEffect(() => {
+    async function getGroups() {
+      const result = await fetch(`${userAPI}`,{
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        },
+      });
+      const resultBody = await result.json();
+      
+      return setGroups(resultBody);
+    }
+    getGroups();
+  },[]);
+   
+  console.log(groups);
+  
+  
+
+
   return (
     <>
-      <Card>
-        
-        <Card.Body>
-          <Card.Title>Group Name</Card.Title>
-          <Container>
-            <Row>
-              <Col>
-                <Card>
-                  <Card.Title>Event Name</Card.Title>
-                  <Card.Text>
-                    <Badge className="Button" color="success" pill>Status</Badge>
-                  </Card.Text>
-                </Card>
-              </Col>
-              <Col>
-                <Card>
-                  <Card.Title>Event Name</Card.Title>
-                  <Card.Text>
-                    <Badge className="Button" color="success" pill>Status</Badge>
-                  </Card.Text>
-                </Card>
-              </Col>
-              <Col>
-                <Card>
-                  <Card.Title>Event Name</Card.Title>
-                  <Card.Text>
-                    <Badge className="Button" color="success" pill>Status</Badge>
-                  </Card.Text>
-                </Card>
-              </Col>
-              <Col>
-                <Card>
-                  <Card.Title>Event Name</Card.Title>
-                  <Card.Text>
-                    <Badge className="Button" color="warning" pill>Status</Badge>
-                  </Card.Text>
-                </Card>
-              </Col>
-              <Col>
-                <Card>
-                  <Card.Title>Event Name</Card.Title>
-                  <Card.Text>
-                    <Badge className="Button" color="danger" pill>Status</Badge>
-                  </Card.Text>
-                </Card>
-              </Col>
-            </Row>
-          </Container>
-        </Card.Body>
-      </Card>
+      {groups.map((group) => (
+        <Card>
+          <Card.Body>
+            <Card.Title>{group.groupName}</Card.Title>
+            <Container>
+              <Card.Text>{group.description}</Card.Text>
+              <GroupEvent groupEvents={group.groupEvents}/>
+            </Container>
+          </Card.Body>
+        </Card>
+      ))}
+      
       
     </>
+  )
+}
+
+function GroupEvent(props) {
+  const {groupEvents} = props;
+  const {user} = useAuth();
+  return (
+    <Row>
+        {groupEvents.map((event) => (
+          <Col>
+            <Card>
+              <Card.Title>{event.eventName}</Card.Title>
+              <Card.Text>
+                <Badge className="Button" color="success" pill>Status</Badge>
+              </Card.Text>
+            </Card>
+          </Col>
+        ))}
+    </Row>                
+
   )
 }
 

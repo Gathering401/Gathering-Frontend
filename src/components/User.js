@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Container, Figure} from 'react-bootstrap'
 import logo from '../logo.svg';
+import {useAuth} from '../context/auth'
+
+
 
 export default function User() {
+  const {user} = useAuth();
+
   return (
     <Container>
       <Figure>
@@ -19,3 +24,4 @@ export default function User() {
     </Container>
   )
 }
+
