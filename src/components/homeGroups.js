@@ -22,7 +22,7 @@ export default function HomeGroups() {
       return setGroups(resultBody);
     }
     getGroups();
-  },[]);
+  },);
    
   console.log(groups);
   
@@ -50,7 +50,6 @@ export default function HomeGroups() {
 
 function GroupEvent(props) {
   const {groupEvents} = props;
-  const {user} = useAuth();
   return (
     <Row>
         {groupEvents.map((event) => (
