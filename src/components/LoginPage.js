@@ -17,13 +17,13 @@ export default function Login() {
             <Button onClick={handleShow}>Click to Register</Button>
 
             <Modal
-            show={show}
-            onHide={handleClose}
-            backdrop="static"
-            keyboard={false}
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
             >
                 <Modal.Header closeButton>
-                <Modal.Title>Register a new user</Modal.Title>
+                    <Modal.Title>Register a new user</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Register />

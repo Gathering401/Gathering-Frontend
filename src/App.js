@@ -1,25 +1,28 @@
 import './App.css';
-import { Switch, Route} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Home from './components/Home'
 import Login from './components/LoginPage';
-import Register from './components/auth/RegisterForm';
 import Event from './components/Event';
+import Auth from './components/auth';
+import NotAuth from './components/auth/NotAuth';
 
 function App() {
+
   return (
     <div className="App">
       <Switch>
         <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/Login" exact>
-          <Login />
-        </Route>
-        <Route path="/Register" exact>
-          <Register />
+          <NotAuth>
+            <Login />
+          </NotAuth>
+          <Auth>
+            <Home />
+          </Auth>
         </Route>
         <Route path="/Event" exact>
-          <Event />
+          <Auth>
+            <Event />
+          </Auth>
         </Route>
       </Switch>
     </div>

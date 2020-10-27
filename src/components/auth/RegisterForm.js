@@ -8,7 +8,7 @@ export default function Register() {
     const { user, register } = useAuth();
 
     if (user) {
-        return null;
+        return(<h2>You're already signed in!</h2>);
     }
 
     async function handleSubmit(e) {
