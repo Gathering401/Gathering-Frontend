@@ -1,94 +1,102 @@
-import React, { useContext, useState } from 'react';
+// taken from https://github.com/DeltaVCode/cr-dotnet-401d2/blob/master/Class39/Demo/my-first-react-app/src/contexts/auth.js
+// Written by Keith Dahlby
+
+import React, { useContext, useCallback, useMemo, useState, useEffect } from 'react';
 import jwt from 'jsonwebtoken';
+import cookie from 'react-cookies';
+const cookieName = 'auth';
 
+const usersAPI = 'https://gathering.azurewebsites.net/api/User';
 
-const userAPI = 'https://gathering.azurewebsites.net/api/User';
 export const AuthContext = React.createContext();
 
 export function useAuth() {
-    const auth = useContext(AuthContext);
-    if (!auth) throw new Error("You are missing AuthProvider!");
-    return auth;
+  const auth = useContext(AuthContext);
+  if (!auth) throw new Error('You are missing AuthProvider!');
+  return auth;
 }
+export default useAuth;
 
 export function AuthProvider(props) {
-    const [state, setState] = useState({
-        user: null,
-        login,
-        logout,
-        register
-    })
+  const [user, setUser] = useState(null);
 
-    function setUser(user) {
-        user = processToken(user);
+  useEffect(() => {
+    console.log(`Checking for ${cookieName} cookie`);
+    const cookieToken = cookie.load(cookieName);
+    const cookieUser = processToken(cookieToken);
+    setUser(cookieUser);
+  }, []);
 
-        setState(prevState => ({
-            ...prevState,
-            user,
-        }));
+  const login = useCallback(async function login(username, password) {
+    const result = await fetch(`${usersAPI}/Login`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    });
 
-        return !!user;
+    const resultBody = await result.json();
+
+    if (result.ok) {
+      let user = processToken(resultBody.token);
+      console.log('setting user from token', user);
+      setUser(user);
+      return !!user;
     }
 
-    async function login(username, password) {
-        const result = await fetch(`${userAPI}/Login`, {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username, password }),
-        });
+    // TODO: add an error to show about invalid username/password
+    logout();
+    return false;
+  }, []);
 
-        const resultBody = await result.json();
+  function logout() {
+    setUser(null)
+    cookie.remove(cookieName, { path: '/' });
+  }
 
-        if (result.ok) {
-            setUser(processToken(resultBody));
-            return true;
-        }
+  const hasPermission = useCallback(function hasPermission(permission) {
+    return user?.permissions.includes(permission);
+  }, [user]);
 
-        logout();
-    }
+  const state = useMemo(() => ({
+    user,
+    timestamp: new Date(),
 
-    function logout() {
-        setUser(null);
-    }
+    login,
+    logout,
+    hasPermission,
+  }), [user, login, hasPermission])
 
-    return (
-        <AuthContext.Provider value={state}>
-            {props.children}
-        </AuthContext.Provider>
-    )
-
-    async function register(FirstName, LastName, Username, Password, Email, PhoneNumber, BirthDate) {
-        await fetch(`${userAPI}/Register`, {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ FirstName, LastName, Username, Password, Email, PhoneNumber, BirthDate }),
-        });
-
-        await login(Username, Password);
-
-    }
+  return (
+    <AuthContext.Provider value={state}>
+      {props.children}
+    </AuthContext.Provider>
+  )
 }
 
-function processToken(user) {
-    if (!user)
-        return null;
+function processToken(token) {
+  if (!token)
+    return null;
 
-    try {
-        const payload = jwt.decode(user.token);
-        console.log(payload);
-        if (payload) {
-            user.permissions = payload.permissions || [];
-            return user;
-        }
+  try {
+    const payload = jwt.decode(token);
+    if (payload){
+      // Token looks legit, so let's save it
+      cookie.save(cookieName, token, { path: '/' });
 
-        return null;
+      return {
+        id: payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'],
+        username: payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
+        permissions: payload.permissions || [],
+        token,
+      }
     }
-    catch (e) {
-        console.warn(e);
-        return null;
-    }
+
+    return null;
+  }
+  catch (e) {
+    console.warn(e);
+    return null;
+  }
 }
