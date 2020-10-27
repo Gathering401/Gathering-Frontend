@@ -8,13 +8,12 @@ export default function Register() {
     const { user, register } = useAuth();
 
     if (user) {
-        return null;
+        return(<h2>You're already signed in!</h2>);
     }
 
     async function handleSubmit(e) {
         e.preventDefault();
         const { target } = e;
-
         const { FirstName, LastName, Username, Password, Email, PhoneNumber, BirthDate } = target.elements;
 
         console.log(FirstName.value, LastName.value, Username.value, Password.value, Email.value, PhoneNumber.value, BirthDate.value);
