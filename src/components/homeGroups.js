@@ -12,6 +12,7 @@ export default function HomeGroups() {
   
   useEffect(() => {
     async function getGroups() {
+      
       const result = await fetch(`${userAPI}`,{
         headers: {
           'Authorization': `Bearer ${user.token}`
@@ -22,7 +23,8 @@ export default function HomeGroups() {
       return setGroups(resultBody);
     }
     getGroups();
-  },);
+    // eslint-disable-next-line
+  },[]);
    
   console.log(groups);
   
