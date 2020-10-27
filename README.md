@@ -15,3 +15,7 @@ Using Twilio for event notifications through text messages. People can respond t
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | <a href="https://github.com/ehilst515" target="_blank">Enrique GitHub</a> | <a href="https://github.com/christianlievrouw" target="_blank">Christian GitHub</a> | <a href="https://github.com/jenjones319" target="_blank">Jen GitHub</a> | <a href="https://github.com/arikmackenburg" target="_blank">Arik GitHub</a> | <a href="https://github.com/OCDAmmo3" target="_blank">Jon GitHub</a> |
 | <a href="https://www.linkedin.com/in/ehilst" target="_blank">Enrique LinkedIn</a> | <a href="https://www.linkedin.com/in/christianlievrouw" target="_blank">Christian LinkedIn</a> |<a href="https://www.linkedin.com/in/jenniferbjones/" target="_blank">Jen LinkedIn</a> | <a href="https://www.linkedin.com/in/arikmackenburg" target="_blank">Arik LinkedIn</a> | <a href="https://www.linkedin.com/in/jon-struve/" target="_blank">Jon LinkedIn</a> |
+
+## Deploy Status Badge
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/28c7f649-667c-468b-b0f2-3e0f3c30d11a/deploy-status)](https://app.netlify.com/sites/gathering401/deploys)
