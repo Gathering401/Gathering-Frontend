@@ -18,6 +18,8 @@ function App() {
           </Route>
           <Route path="/Register" exact>
             <Register />
+          <Route path="/Event" exact>
+            <Event />
           </Route>
           <Route path="/Event" exact>
             <Event />
