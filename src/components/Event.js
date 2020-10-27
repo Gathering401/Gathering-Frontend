@@ -1,6 +1,5 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
-import TimePicker from 'react-bootstrap-time-picker';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { Col } from 'react-bootstrap';
@@ -136,17 +135,17 @@ export default function EventForm() {
 
           <Form.Row>
             <Col md={6}>
-              <Form.Group controlId="">
-                <Form.Label>Start time</Form.Label>
-                <TimePicker start="10:00" end="21:00" step={30} />
-              </Form.Group>
+            <Form.Group controlId="">
+        <Form.Label>Start time</Form.Label>
+        <Form.Control name="Time" type="time" placeholder="10:00" />
+      </Form.Group>
             </Col>
 
             <Col md={6}>
-              <Form.Group controlId="">
-                <Form.Label>End time</Form.Label>
-                <TimePicker start="10:00" end="21:00" step={30} />
-              </Form.Group>
+            <Form.Group controlId="">
+        <Form.Label>End time</Form.Label>
+        <Form.Control name="Time" type="time" placeholder="10:00" />
+      </Form.Group>
             </Col>
           </Form.Row>
 
