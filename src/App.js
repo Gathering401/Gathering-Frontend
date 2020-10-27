@@ -21,9 +21,9 @@ function App() {
           </Auth>
         </Route>
         <Route path="/Event" exact>
-          <Auth>
+          {/* <Auth> */}
             <Event />
-          </Auth>
+          {/* </Auth> */}
         </Route>
         <Route path="/EventDetail" exact>
           <EventDetail />
