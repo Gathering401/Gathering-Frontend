@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import jwt from 'jsonwebtoken';
-import { Redirect } from 'react-router-dom';
 
 
 const userAPI = 'https://gathering.azurewebsites.net/api/User';
