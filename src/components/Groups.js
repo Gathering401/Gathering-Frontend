@@ -8,21 +8,21 @@ export default function Groups() {
         <>
             <Card>
                 <Card.Body>
-                    <Card.Title>Group Page</Card.Title>
+                    <Card.Title>Gathering - Group Page</Card.Title>
                     <Container>
+                        <Col>
                         <Row>
                             <Card>
-                                <Card.Title>Group Details</Card.Title>
-                                <Card.Text>
-                                    <Badge className="Button" color="info" pill>Details</Badge>
-                                </Card.Text>
+                                <Card.Title>Events</Card.Title>
                             </Card>
                         </Row>
                         <Row>
                             <Card>
-                                <Card.Title>Group Events</Card.Title>
+                                <Card.Title>Event Name</Card.Title>
                                 <Card.Text>
-                                    <Badge className="Button" color="info" pill>Details</Badge>
+                                    <Badge className="Button" color="success" pill>Going</Badge>
+                                    <Badge className="Button" color="info" pill>Maybe</Badge>
+                                    <Badge className="Button" color="danger" pill>No</Badge>
                                 </Card.Text>
                             </Card>
                         </Row>
@@ -30,7 +30,9 @@ export default function Groups() {
                             <Card>
                                 <Card.Title>Event Name</Card.Title>
                                 <Card.Text>
-                                    <Badge className="Button" color="info" pill>Details</Badge>
+                                    <Badge className="Button" color="success" pill>Going</Badge>
+                                    <Badge className="Button" color="info" pill>Maybe</Badge>
+                                    <Badge className="Button" color="danger" pill>No</Badge>
                                 </Card.Text>
                             </Card>
                         </Row>
@@ -38,7 +40,9 @@ export default function Groups() {
                             <Card>
                                 <Card.Title>Event Name</Card.Title>
                                 <Card.Text>
-                                    <Badge className="Button" color="info" pill>Details</Badge>
+                                    <Badge className="Button" color="success" pill>Going</Badge>
+                                    <Badge className="Button" color="info" pill>Maybe</Badge>
+                                    <Badge className="Button" color="danger" pill>No</Badge>
                                 </Card.Text>
                             </Card>
                         </Row>
@@ -46,10 +50,13 @@ export default function Groups() {
                             <Card>
                                 <Card.Title>Event Name</Card.Title>
                                 <Card.Text>
-                                    <Badge className="Button" color="info" pill>Details</Badge>
+                                    <Badge className="Button" color="success" pill>Going</Badge>
+                                    <Badge className="Button" color="info" pill>Maybe</Badge>
+                                    <Badge className="Button" color="danger" pill>No</Badge>
                                 </Card.Text>
                             </Card>
                         </Row>
+                        </Col>
                     </Container>
                 </Card.Body>
             </Card>
