@@ -59,7 +59,7 @@ export default function EventForm() {
 
       <Form.Group controlId="">
         <Form.Label>End time</Form.Label>
-        <TimePicker start="10:00" end="21:00" step={30} />
+        <Form.Control name="Time" type="time" placeholder="10:00" />
       </Form.Group>
 
       <Form.Group controlId="">
