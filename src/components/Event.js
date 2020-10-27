@@ -1,18 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { Col } from 'react-bootstrap';
 
 
-export default function EventForm() {
-  return (
 
-    <Modal.Dialog>
-      <Modal.Header closeButton>
+export default function EventForm() {
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  return (
+    <>
+    <Button onClick={handleShow}>Click this shit Boi</Button>
+
+    <Modal 
+    show={show}
+    onHide={handleClose}
+    backdropClassName="static"
+    keyboard={true}
+    >
+      <Modal.Header>
         <Modal.Title>
           Create an event
-    </Modal.Title>
+        </Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
@@ -157,10 +170,10 @@ export default function EventForm() {
       </Modal.Body>
 
       <Modal.Footer>
-        <Button variant="secondary">Close</Button>
-        <Button variant="primary">Save changes</Button>
+        <Button variant="primary">Create</Button>
       </Modal.Footer>
       
-    </Modal.Dialog>
+    </Modal>
+    </>
   )
 }
