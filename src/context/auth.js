@@ -42,7 +42,8 @@ export function AuthProvider(props) {
         const resultBody = await result.json();
 
         if (result.ok) {
-            return setUser(resultBody);
+            setUser(processToken(resultBody));
+            return true;
         }
 
         logout();
@@ -58,7 +59,7 @@ export function AuthProvider(props) {
         </AuthContext.Provider>
     )
 
-    async function register(FirstName, LastName, Username, Password, Email, PhoneNumber, BirthDate ) {
+    async function register(FirstName, LastName, Username, Password, Email, PhoneNumber, BirthDate) {
         await fetch(`${userAPI}/Register`, {
             method: 'post',
             headers: {

@@ -6,9 +6,10 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useAuth } from '../../context/auth';
+import { Redirect } from 'react-router';
 
 export default function LoginForm() {
-    const { login } = useAuth();
+    const { login, user } = useAuth();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -20,11 +21,17 @@ export default function LoginForm() {
             target.reset();
         }
     }
+    
+    if (user) {
+        return (
+            <Redirect to="/" />
+        )
+    }
 
     return (
         <Container>
             <Row>
-            <Col lg={4}></Col>
+                <Col lg={4}></Col>
                 <Col lg={4}>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group>
