@@ -5,6 +5,7 @@ import Login from './components/LoginPage';
 import Event from './components/Event';
 import Auth from './components/auth';
 import NotAuth from './components/auth/NotAuth';
+import EventDetail from './components/EventDetail';
 
 function App() {
 
@@ -23,6 +24,9 @@ function App() {
           <Auth>
             <Event />
           </Auth>
+        </Route>
+        <Route path="/EventDetail" exact>
+          <EventDetail />
         </Route>
       </Switch>
     </div>
