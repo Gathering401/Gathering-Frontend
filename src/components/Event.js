@@ -6,14 +6,15 @@ import { Col } from 'react-bootstrap';
 import {useAuth} from '../context/auth';
 
 
-const eventAPI = 'https://gathering.azurewebsites.net/api/Event';
+const userAPI = 'https://gathering.azurewebsites.net/api';
 
 
 
 
 export default function EventForm() {
-
   const [show, setShow] = useState(false);
+  const {user} = useAuth();
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -21,22 +22,33 @@ export default function EventForm() {
     e.preventDefault();
     const { target } = e;
 
-    const { eventName, start, end, dayOfMonth, food, cost, location } = target.elements;
-
-    if (!await CreateEvent(eventName.value, start.value, end.value, dayOfMonth.value, food.value, cost.value, location.value)) {
+    const { eventName, start, end, food, cost, address, city, state, zip } = target.elements;
+    const newEvent = {
+      eventName: eventName.value,
+        start:start.value,
+        end: end.value,
+        food: food.value,
+        cost: cost.value,
+        location: address.value + " " + city.value + ", " + state.value + " " + zip.value,
+    }
+    if (!await CreateEvent(newEvent)) {
       target.reset();
     }
   }
 
-  async function CreateEvent(eventName, start, end, dayOfMonth, food, cost, location) {
-    const {user} = useAuth();
-    await fetch(`${eventAPI}/Event`, {
+  async function CreateEvent(newEvent) {
+    const userToken = user.token;
+    const result = await fetch(`${userAPI}/Event`, {
       method: 'post',
       headers: {
-        'Authorization': `Bearer ${user.token}`, 'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`, 
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ eventName, start, end, dayOfMonth, food, cost, location }),
+      body: JSON.stringify(newEvent),
     });
+    console.log(result)
+    handleClose();
+    
   }
 
   return (
@@ -153,6 +165,8 @@ export default function EventForm() {
                   name="food"
                   id="custom-switch"
                   label="Will be food"
+                  defaultValue={false}
+                  defaultChecked={true}
                 />
               </Form.Label>
             </Form.Group>
@@ -194,12 +208,13 @@ export default function EventForm() {
               <Form.Label>Description</Form.Label>
               <Form.Control name="description" type="input" placeholder="Description" />
             </Form.Group>
+            <Button type="submit">Create Event</Button>
           </Form>
           
         </Modal.Body>
 
         <Modal.Footer>
-          <Button type="submit">Create Event</Button>
+          
         </Modal.Footer>
 
       </Modal>
