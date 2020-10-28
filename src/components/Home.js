@@ -3,6 +3,7 @@ import {Container, Row, Col} from 'react-bootstrap'
 import Header from './Header'
 import Tabs from './homeTabs'
 import User from './User'
+import GroupCard from './GroupCard';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
           </Col>
           <Col xs={9}>
             <Tabs />
+            <GroupCard />
           </Col>
         </Row>
      </Container>

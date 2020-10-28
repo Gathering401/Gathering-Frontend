@@ -41,7 +41,7 @@ export default function EventForm() {
 
   return (
     <>
-      <Button onClick={handleShow}>Click this shit Boi</Button>
+      <Button onClick={handleShow}>Add Event</Button>
 
       <Modal
         show={show}
