@@ -88,6 +88,7 @@ function processToken(token) {
       return {
         id: payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'],
         username: payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
+        userId: payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'],
         permissions: payload.permissions || [],
         token,
       }
