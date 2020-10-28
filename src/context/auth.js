@@ -1,4 +1,4 @@
-// taken from https://github.com/DeltaVCode/cr-dotnet-401d2/blob/master/Class39/Demo/my-first-react-app/src/contexts/auth.js
+// Taken from https://github.com/DeltaVCode/cr-dotnet-401d2/blob/master/Class39/Demo/my-first-react-app/src/contexts/auth.js
 // Written by Keith Dahlby
 
 import React, { useContext, useCallback, useMemo, useState, useEffect } from 'react';
@@ -84,6 +84,8 @@ function processToken(token) {
     if (payload){
       // Token looks legit, so let's save it
       cookie.save(cookieName, token, { path: '/' });
+
+      console.log(`Token expires at: ${new Date(payload.exp * 1000)}`);
 
       return {
         id: payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'],
