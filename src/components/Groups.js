@@ -56,6 +56,7 @@ export default function Groups() {
   )
 }
 
+// eslint-disable-next-line no-unused-vars
 function groupEvent(props) {
   const {groupEvents} = props;
   
