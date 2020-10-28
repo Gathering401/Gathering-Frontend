@@ -27,14 +27,11 @@ export default function HomeGroups() {
   },[]);
    
   console.log(groups);
-  
-  
-
 
   return (
     <>
       {groups.map((group) => (
-        <Card>
+        <Card >
           <Card.Body>
             <Card.Title>{group.groupName}</Card.Title>
             <Container>
@@ -44,8 +41,6 @@ export default function HomeGroups() {
           </Card.Body>
         </Card>
       ))}
-      
-      
     </>
   )
 }

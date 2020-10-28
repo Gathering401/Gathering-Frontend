@@ -12,6 +12,7 @@ export default function Groups() {
     const [groups,setGroups] = useState([]);
 
     useEffect(() => {
+      console.log("Cheese")
         async function getGroups() {
           const result = await fetch(`${userAPI}`,{
             headers: {
@@ -23,7 +24,8 @@ export default function Groups() {
           return setGroups(resultBody);
         }
         getGroups();
-      },);
+    // eslint-disable-next-line
+      },[]);
        
 
       return (
@@ -33,9 +35,7 @@ export default function Groups() {
               <Card.Body>
                 <Card.Title>{group.groupName}</Card.Title>
                 <Container>
-                                <Card.Text>{group.groupName} </Card.Text>
                                 <Card.Text>{group.description}</Card.Text>
-                                <Card.Text>{group.members}</Card.Text>
                                 <Card.Text>{group.location}</Card.Text>
                             <Row>
                                 <Card>
@@ -55,6 +55,7 @@ export default function Groups() {
     </>
   )
 }
+
 
 // eslint-disable-next-line no-unused-vars
 function groupEvent(props) {

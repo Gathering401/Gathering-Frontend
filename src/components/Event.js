@@ -46,7 +46,8 @@ export default function EventForm() {
       },
       body: JSON.stringify(newEvent),
     });
-    console.log(result)
+    const resultBody = await result.json()
+    console.log(resultBody)
     handleClose();
     
   }
