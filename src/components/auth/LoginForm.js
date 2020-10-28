@@ -38,7 +38,7 @@ export default function LoginForm() {
                             <Form.Label>Log In</Form.Label>
                             <Form.Control placeholder="Username" name="username"></Form.Control>
                             <Form.Control placeholder="Password" name="password" type="password"></Form.Control>
-                            <Button type="submit">Sign In</Button>
+                            <Button type="submit" color>Sign In</Button>
                         </Form.Group>
                     </Form>
                 </Col>
