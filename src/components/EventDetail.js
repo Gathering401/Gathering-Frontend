@@ -49,7 +49,6 @@ export default function EventDetailsModal(props) {
               Details for {eventDetails.eventName}
             </Modal.Title>
           </Modal.Header>
-
           <Modal.Body>
               <p>Description: {eventDetails.description ? eventDetails.description : "No details provided"}</p>
               <p>Date: {`${eventMonth}/${eventDate}/${eventYear}`}</p>
@@ -59,7 +58,6 @@ export default function EventDetailsModal(props) {
               <p>Invited: {eventDetails.attending.length} Gatherers</p>
               <p>{eventDetails.eventHost ? `Host: ${eventDetails.eventHost}` : ""}</p>
           </Modal.Body>
-
           <Modal.Footer>
             <Button onClick={handleClose}>Close</Button>
           </Modal.Footer>
