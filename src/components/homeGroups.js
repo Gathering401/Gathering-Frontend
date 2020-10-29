@@ -4,7 +4,7 @@ import { Badge} from 'reactstrap';
 import '../App.css'
 import { useAuth } from '../context/auth';
 import EventDetail from './EventDetail'
-
+import {Link} from 'react-router-dom';
 
 export default function HomeGroups() {
   const { user } = useAuth();
@@ -32,9 +32,12 @@ export default function HomeGroups() {
   return (
     <>
       {groups.map((group) => (
-        <Card >
+        <Card>
+          
           <Card.Body>
-            <Card.Title>{group.groupName}</Card.Title>
+            <Link to={`/Group/${group.groupId}`}>
+              <Card.Title>{group.groupName}</Card.Title>
+            </Link>
             <Container>
               <Card.Text>{group.description}</Card.Text>
               <GroupEvent groupEvents={group.groupEvents}/>
@@ -64,3 +67,4 @@ function GroupEvent(props) {
     </Row>
   )
 }
+
