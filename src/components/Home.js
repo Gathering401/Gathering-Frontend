@@ -2,7 +2,7 @@ import React from 'react';
 import {Container, Row, Col} from 'react-bootstrap'
 import Tabs from './homeTabs'
 import User from './User'
-// import GroupCard from './GroupCard';
+import Groups from './homeGroups'
 
 export default function Home() {
   return (
@@ -13,8 +13,7 @@ export default function Home() {
             <User />
           </Col>
           <Col xs={9}>
-            <Tabs />
-            {/* <GroupCard /> */}
+            <Groups />
           </Col>
         </Row>
      </Container>

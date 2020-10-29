@@ -29,7 +29,7 @@ export default function Group(props) {
     getGroup();
     // eslint-disable-next-line
   },[user]);
-       
+   
 
   return (
     <>
