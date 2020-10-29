@@ -1,6 +1,5 @@
 import React from 'react';
 import {Container, Row, Col} from 'react-bootstrap'
-import Tabs from './homeTabs'
 import User from './User'
 import Groups from './homeGroups'
 
