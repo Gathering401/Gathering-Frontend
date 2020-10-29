@@ -27,11 +27,6 @@ export default function HomeGroups() {
     // eslint-disable-next-line
   }, []);
 
-  console.log(groups);
-
-
-
-
   return (
     <>
       {groups.map((group) => (
@@ -45,8 +40,6 @@ export default function HomeGroups() {
           </Card.Body>
         </Card>
       ))}
-
-
     </>
   )
 }
@@ -61,13 +54,11 @@ function GroupEvent(props) {
             <Card.Title>{event.eventName}</Card.Title>
             <Card.Text>
               <Badge className="Button" color="success" pill>Status</Badge>
-              <EventDetail eventObject={event.EventId} />
+              <EventDetail eventId={event.eventId} />
             </Card.Text>
           </Card>
         </Col>
       ))}
     </Row>
-
   )
 }
-
