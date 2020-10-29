@@ -5,17 +5,17 @@ import Button from 'react-bootstrap/Button';
 import { Col } from 'react-bootstrap';
 import {useAuth} from '../context/auth';
 
-
 const userAPI = 'https://gathering.azurewebsites.net/api';
 
-
-
-
-export default function EventForm() {
+export default function EventForm(props) {
+  const {groupId, onCreate} = props
   const [show, setShow] = useState(false);
   const {user} = useAuth();
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    onCreate&&onCreate();
+  }
   const handleShow = () => setShow(true);
 
   async function handleSubmit(e) {
@@ -29,7 +29,7 @@ export default function EventForm() {
         end: end.value,
         food: food.value,
         cost: cost.value,
-        location: address.value + " " + city.value + ", " + state.value + " " + zip.value,
+        location: address.value + " " + city.value + ", " + state.value + " " + zip.value
     }
     if (!await CreateEvent(newEvent)) {
       target.reset();
@@ -38,7 +38,7 @@ export default function EventForm() {
 
   async function CreateEvent(newEvent) {
     const userToken = user.token;
-    const result = await fetch(`${userAPI}/Event`, {
+    const result = await fetch(`${userAPI}/Group/${groupId}/Event`, {
       method: 'post',
       headers: {
         'Authorization': `Bearer ${userToken}`, 
@@ -46,9 +46,9 @@ export default function EventForm() {
       },
       body: JSON.stringify(newEvent),
     });
-    console.log(result)
+    const resultBody = await result
+    console.log(resultBody)
     handleClose();
-    
   }
 
   return (
@@ -221,3 +221,4 @@ export default function EventForm() {
     </>
   )
 }
+

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import LoginForm from './auth/LoginForm';
-import Header from './Header';
 import Button from 'react-bootstrap/Button';
 import { Modal } from 'react-bootstrap';
-import Register from './auth/RegisterForm';
+import Register from './RegisterForm';
 
 export default function Login() {
     const [show, setShow] = useState(false);
@@ -12,7 +11,6 @@ export default function Login() {
 
     return (
         <>
-            <Header />
             <LoginForm />
             <Button onClick={handleShow}>Click to Register</Button>
 

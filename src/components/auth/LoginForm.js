@@ -29,16 +29,18 @@ export default function LoginForm() {
     }
 
     return (
-        <Container>
+        <Container className="login">
             <Row>
                 <Col lg={4}></Col>
                 <Col lg={4}>
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group>
-                            <Form.Label>Log In</Form.Label>
+                        <Form.Group className="login-form">
+                            <h1>Log In</h1>
                             <Form.Control placeholder="Username" name="username"></Form.Control>
+                            <br></br>
                             <Form.Control placeholder="Password" name="password" type="password"></Form.Control>
-                            <Button type="submit" color>Sign In</Button>
+                            <br></br>
+                            <Button type="submit">Sign In</Button>
                         </Form.Group>
                     </Form>
                 </Col>

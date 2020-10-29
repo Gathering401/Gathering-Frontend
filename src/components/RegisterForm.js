@@ -1,22 +1,34 @@
 import React from 'react';
-import { useAuth } from '../../context/auth';
+import { useAuth } from '../context/auth';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 
 export default function Register() {
-    const { user, register } = useAuth();
+    const { user, login } = useAuth();
+    const registerAPI = 'https://gathering.azurewebsites.net/api/User/Register';
 
     if (user) {
-        return(<h2>You're already signed in!</h2>);
+        return(<h2>You're already logged in!</h2>);
+    }
+
+    async function register(FirstName, LastName, Username, Password, Email, PhoneNumber, BirthDate) {
+        await fetch(registerAPI, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ FirstName, LastName, Username, Password, Email, PhoneNumber, BirthDate }),
+        });
+
+        await login(Username, Password);
+
     }
 
     async function handleSubmit(e) {
         e.preventDefault();
         const { target } = e;
         const { FirstName, LastName, Username, Password, Email, PhoneNumber, BirthDate } = target.elements;
-
-        console.log(FirstName.value, LastName.value, Username.value, Password.value, Email.value, PhoneNumber.value, BirthDate.value);
 
         if (!await register(FirstName.value, LastName.value, Username.value, Password.value, Email.value, PhoneNumber.value, BirthDate.value)) {
             target.reset();
