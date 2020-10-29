@@ -3,6 +3,7 @@ import {Card, Col, Container} from 'react-bootstrap';
 import '../App.css'
 import { useAuth } from '../context/auth';
 import Event from './Event';
+import AddUser from './GroupsForm'
 
 
 
@@ -54,6 +55,7 @@ export default function Group(props) {
     </Card>
 
     <Event groupId={groupId} onCreate={getGroup}/>
+    <AddUser groupId={groupId}/>
   </>
   )
 }
