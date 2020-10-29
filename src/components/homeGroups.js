@@ -5,7 +5,7 @@ import '../App.css'
 import { useAuth } from '../context/auth';
 import Event from './Event';
 import EventDetail from './EventDetail'
-
+import {Link} from 'react-router-dom';
 
 
 export default function HomeGroups() {
@@ -36,39 +36,4 @@ export default function HomeGroups() {
       {groups.map((group) => (
         <Card className="group-card">
           <Card.Body>
-            <Card.Title className="group-title"><h2>{group.groupName}</h2></Card.Title>
-            <Container>
-              <Card.Text>{group.description}</Card.Text>
-              <GroupEvent groupEvents={group.groupEvents} />
-              <div className="event-stuff">
-                <Event />
-              </div>
-            </Container>
-          </Card.Body>
-        </Card>
-      ))}
-    </Row>
-  )
-}
-
-function GroupEvent(props) {
-  const { groupEvents } = props;
-  return (
-    <Row>
-      {groupEvents.map((event) => (
-        <Col>
-          <Card className="event-card">
-            <Card.Title>{event.eventName}</Card.Title>
-            <Badge className="Button" color="success">Status</Badge>
-            <Card.Text className="event-button">
-              <br></br>
-              <EventDetail eventId={event.eventId} />
-            </Card.Text>
-          </Card>
-        </Col>
-      ))}
-    </Row>
-    
-  )
-}
-
+       
