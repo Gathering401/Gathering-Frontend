@@ -1,5 +1,39 @@
-import React from 'react';
 import Button from 'react-bootstrap/Button';
+import React, { useEffect, useState } from 'react';
+import useAuth from '../contexts/auth';
+
+const mapUserIDToGroup = user => ({
+    id: user.id,
+    email: user.email,
+    phone: user.phone,
+  });
+  
+  export default function UserID() {
+    // eslint-disable-next-line no-unused-vars
+    const { user } = useAuth();
+    const userAPI = 'https://gathering.azurewebsites.net/api/Group';
+    // eslint-disable-next-line no-unused-vars
+    const [User, getUser] = useState([]);
+  
+    useEffect(() => {
+      console.log('Run me once when the component loads');
+  
+      async function fetchUserID() {
+
+        let response = await fetch(userAPI);
+        let tasks = await response.json();
+        console.log(tasks);
+        // eslint-disable-next-line no-undef
+        setUsers(User.map(mapUserIDToGroup));
+      }
+      fetchUserID();
+  
+      // "Dispose" action
+      return () => {
+        console.log('Run me when component goes away')
+      }
+    }, );
+  
 
 
 
@@ -40,5 +74,6 @@ class NameForm extends React.Component {
           <Button type="submit" value="Submit" pill />
         </form>
       );
+    }
     }
   }
