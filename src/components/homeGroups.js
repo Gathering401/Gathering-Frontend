@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import {Card, Container,Col, Row} from 'react-bootstrap';
 import { Badge} from 'reactstrap';
-import '../App.css'
+import '../App.css';
 import { useAuth } from '../context/auth';
-import EventDetail from './EventDetail'
-
+import EventDetail from './EventDetail';
+import CreatGroupForm from './CreateGroupForm';
 
 export default function HomeGroups() {
   const { user } = useAuth();
@@ -42,6 +42,7 @@ export default function HomeGroups() {
           </Card.Body>
         </Card>
       ))}
+      <CreatGroupForm />
     </>
   )
 }
@@ -63,4 +64,4 @@ function GroupEvent(props) {
       ))}
     </Row>
   )
-}
+};
