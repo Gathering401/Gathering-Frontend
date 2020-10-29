@@ -4,8 +4,6 @@ import { Badge } from 'reactstrap';
 import '../App.css'
 import { useAuth } from '../context/auth';
 
-
-
 export default function Groups() {
   const { user } = useAuth();
   const userAPI = 'https://gathering.azurewebsites.net/api/Group';
@@ -50,8 +48,6 @@ export default function Groups() {
           </Card.Body>
         </Card>
       ))}
-
-
     </>
   )
 }
