@@ -4,7 +4,6 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { Col } from 'react-bootstrap';
 import {useAuth} from '../context/auth';
-import {Link} from 'react-router-dom';
 
 const userAPI = 'https://gathering.azurewebsites.net/api';
 
