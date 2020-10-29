@@ -4,8 +4,8 @@ import { Badge } from 'reactstrap';
 import '../App.css'
 import { useAuth } from '../context/auth';
 import Event from './Event';
-import EventDetail from './EventDetail'
-
+import EventDetail from './EventDetail';
+import {Link} from 'react-router-dom';
 
 
 export default function HomeGroups() {
@@ -36,7 +36,10 @@ export default function HomeGroups() {
       {groups.map((group) => (
         <Card className="group-card">
           <Card.Body>
-            <Card.Title className="group-title"><h2>{group.groupName}</h2></Card.Title>
+            <Link to={`/Group/${group.groupId}`}>
+              <Card.Title className="group-title"><h2>{group.groupName}</h2></Card.Title>
+            </Link>
+            
             <Container>
               <Card.Text>{group.description}</Card.Text>
               <GroupEvent groupEvents={group.groupEvents} />

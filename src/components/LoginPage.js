@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import LoginForm from './auth/LoginForm';
 import Button from 'react-bootstrap/Button';
-import { Container, Modal } from 'react-bootstrap';
-import Register from './auth/RegisterForm';
+import { Modal, Container } from 'react-bootstrap';
+import Register from './RegisterForm';
 
 export default function Login() {
     const [show, setShow] = useState(false);
