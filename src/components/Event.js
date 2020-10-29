@@ -8,9 +8,6 @@ import {useAuth} from '../context/auth';
 
 const userAPI = 'https://gathering.azurewebsites.net/api';
 
-
-
-
 export default function EventForm() {
   const [show, setShow] = useState(false);
   const {user} = useAuth();
