@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: #586F7C;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -28,6 +30,44 @@
   color: #61dafb;
 }
 
+.event-stuff {
+  margin-top: 15px;
+}
+
+.group-card {
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12)
+  ;
+    /* min-height: 200px; */
+    width: 50vw;
+    margin: 5px auto;
+    background: white;
+    border-radius: 15px;
+}
+
+.event-card {
+  padding: 10px;
+}
+
+.login {
+  margin-top: 15%;
+  padding: 15px;
+ 
+}
+
+.login-form {
+  color: white;
+}
+
+.login-form h1 {
+  padding-bottom: 15px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -43,4 +83,15 @@
 
 .Button:hover {
   opacity: 1;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #282c34;
+  color: rgb(142, 194, 264);
+  text-align: left;
+  height: 30px;
 }

@@ -19,6 +19,7 @@ export default function User() {
         />
       </Figure>
       <h3>{user === null? "First": user.username}</h3>
+      {/* <h2>Last</h2> */}
 
     </Container>
   )
