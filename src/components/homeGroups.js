@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import {Card, Container,Col, Row} from 'react-bootstrap';
-import { Badge} from 'reactstrap';
+import { Card, Container, Col, Row } from 'react-bootstrap';
+import { Badge } from 'reactstrap';
 import '../App.css';
 import { useAuth } from '../context/auth';
 import EventDetail from './EventDetail';
-import CreatGroupForm from './CreateGroupForm';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import CreateGroupForm from './CreateGroupForm';
 
 export default function HomeGroups() {
   const { user } = useAuth();
@@ -14,14 +14,12 @@ export default function HomeGroups() {
 
   useEffect(() => {
     async function getGroups() {
-
       const result = await fetch(`${userAPI}`, {
         headers: {
           'Authorization': `Bearer ${user.token}`
         },
       });
       const resultBody = await result.json();
-
       return setGroups(resultBody);
     }
     getGroups();
@@ -31,25 +29,27 @@ export default function HomeGroups() {
   console.log(groups);
 
   return (
-    <Row>
+    <>
       {groups.map((group) => (
-        <Card className="group-card">
+        <Card>
           <Card.Body>
-            <Card.Title>{group.groupName}</Card.Title>
+            <Link to={`/Group/${group.groupId}`}>
+              <Card.Title>{group.groupName}</Card.Title>
+            </Link>
             <Container>
               <Card.Text>{group.description}</Card.Text>
-              <GroupEvent groupEvents={group.groupEvents}/>
+              <GroupEvent groupEvents={group.groupEvents} />
             </Container>
           </Card.Body>
         </Card>
       ))}
-      <CreatGroupForm />
+      <CreateGroupForm />
     </>
   )
-}
+};
 
 function GroupEvent(props) {
-  const {groupEvents} = props;
+  const { groupEvents } = props;
   return (
     <Row>
       {groupEvents.map((event) => (
@@ -66,4 +66,3 @@ function GroupEvent(props) {
     </Row>
   )
 };
-
