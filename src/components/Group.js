@@ -13,6 +13,9 @@ export default function Group(props) {
     const [group, setGroup] = useState([]);
 
   useEffect(() => {
+    if(!user) {
+      return;
+    }
     async function getGroup() {
       const result = await fetch(`${userAPI}`,{
         headers: {
@@ -25,7 +28,7 @@ export default function Group(props) {
     }
     getGroup();
     // eslint-disable-next-line
-  },[]);
+  },[user]);
        
 
   return (

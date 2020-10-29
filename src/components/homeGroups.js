@@ -24,7 +24,7 @@ export default function HomeGroups() {
     }
     getGroups();
     // eslint-disable-next-line
-  },[]);
+  },[user]);
    
   console.log(groups);
 
