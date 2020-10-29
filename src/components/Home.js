@@ -11,11 +11,11 @@ export default function Home() {
           <Col>
             <User />
           </Col>
-          <Col xs={9}>
+          <Col xs={12}>
             <Groups />
           </Col>
         </Row>
-     </Container>
+      </Container>
     </>
   );
 }

@@ -35,8 +35,13 @@ function App() {
           <EventDetail />
         </Route>
       </Switch>
+      <Footer />
     </div>
   );
+}
+
+function Footer() {
+  return <footer>&copy; 2020</footer>;
 }
 
 export default App;

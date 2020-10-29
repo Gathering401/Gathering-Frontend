@@ -1,36 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {Card, Col, Container} from 'react-bootstrap';
-import { Button } from 'reactstrap';
 import '../App.css'
 import { useAuth } from '../context/auth';
+import Event from './Event';
 
 
 
 export default function Group(props) {
-    const { groupId } = props;
-    const { user } = useAuth();
-    const userAPI = `https://gathering.azurewebsites.net/api/Group/${groupId}`;
-    const [group, setGroup] = useState([]);
-
-  useEffect(() => {
+  const { groupId } = props;
+  const { user } = useAuth();
+  const userAPI = `https://gathering.azurewebsites.net/api/Group/${groupId}`;
+  const [group, setGroup] = useState({});
+  
+  const getGroup = useCallback( async function getGroup() {
     if(!user) {
+      setGroup({})
       return;
     }
-    async function getGroup() {
-      const result = await fetch(`${userAPI}`,{
-        headers: {
-          'Authorization': `Bearer ${user.token}`
-        },
-      });
-      const resultBody = await result.json();
-        
-      return setGroup(resultBody);
-    }
-    getGroup();
-    // eslint-disable-next-line
-  },[user]);
-   
+    const result = await fetch(`${userAPI}`,{
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+      },
+    });
+    const resultBody = await result.json();
+    return setGroup(resultBody);
+  },[user,userAPI])
 
+  useEffect(() => {
+    getGroup();
+  },[getGroup]);
+
+  if(!group.groupEvents) {
+    return(
+      <>
+      </>
+    )
+  }
   return (
     <>
       <Card>
@@ -40,15 +45,29 @@ export default function Group(props) {
           <Card.Text>{group.location}</Card.Text>
           <Container>
             <Card.Text>
-              {/* <Button className="Button" color="info" pill>Invite Member</Button> */}
               <Col>
-              <Button className="Button" color="info" pill>Host New Event</Button>
               </Col>
-              {/* <Button className="Button" color="info" pill>Leave Group</Button> */}
+              <GroupEvents groupEvents={group.groupEvents} />
             </Card.Text>
           </Container>               
       </Card.Body>
     </Card>
+
+    <Event groupId={groupId} onCreate={getGroup}/>
   </>
+  )
+}
+
+function GroupEvents(props) {
+  const {groupEvents} = props;
+
+  return (
+    <>
+      {groupEvents.map((event) => (
+        <div>
+          <h3>{event.eventName}</h3>
+        </div>
+      ))}
+    </>
   )
 }
