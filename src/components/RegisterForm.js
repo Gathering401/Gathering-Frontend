@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '../../context/auth';
+import { useAuth } from '../context/auth';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -15,8 +15,6 @@ export default function Register() {
         e.preventDefault();
         const { target } = e;
         const { FirstName, LastName, Username, Password, Email, PhoneNumber, BirthDate } = target.elements;
-
-        console.log(FirstName.value, LastName.value, Username.value, Password.value, Email.value, PhoneNumber.value, BirthDate.value);
 
         if (!await register(FirstName.value, LastName.value, Username.value, Password.value, Email.value, PhoneNumber.value, BirthDate.value)) {
             target.reset();
