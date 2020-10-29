@@ -33,7 +33,7 @@ export default function EventDetailsModal(props) {
     let eventYear = date.getYear() + 1900;
     let eventMonth = date.getMonth() + 1;
     let eventDate = date.getDate();
-    
+
     return (
       <>
         <Button onClick={handleShow}>Event Details</Button>
@@ -51,15 +51,13 @@ export default function EventDetailsModal(props) {
           </Modal.Header>
 
           <Modal.Body>
-            <ul>
-              <li>Description: {eventDetails.description ? eventDetails.description : "No details provided"}</li>
-              <li>Date: {`${eventMonth}/${eventDate}/${eventYear}`}</li>
-              <li>Location: {eventDetails.location}</li>
-              <li>Food: {eventDetails.food ? "Yes" : "No"}</li>
-              <li>Cost: {eventDetails.cost === 0 ? "Free!" : "$" + eventDetails.cost}</li>
-              <li>Invited: {eventDetails.attending.length} Gatherers</li>
-              <li>Host: </li>
-            </ul>
+              <p>Description: {eventDetails.description ? eventDetails.description : "No details provided"}</p>
+              <p>Date: {`${eventMonth}/${eventDate}/${eventYear}`}</p>
+              <p>Location: {eventDetails.location}</p>
+              <p>Food: {eventDetails.food ? "Yes" : "No"}</p>
+              <p>Cost: {eventDetails.cost === 0 ? "Free!" : "$" + eventDetails.cost}</p>
+              <p>Invited: {eventDetails.attending.length} Gatherers</p>
+              <p>{eventDetails.eventHost ? `Host: ${eventDetails.eventHost}` : ""}</p>
           </Modal.Body>
 
           <Modal.Footer>
@@ -73,7 +71,6 @@ export default function EventDetailsModal(props) {
   else return (
     <>
       <Button onClick={handleShow}>Event Details</Button>
-
       <Modal
         show={show}
         onHide={handleClose}
