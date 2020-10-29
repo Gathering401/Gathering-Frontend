@@ -3,6 +3,7 @@ import {Card, Container,Col, Row} from 'react-bootstrap';
 import { Badge} from 'reactstrap';
 import '../App.css'
 import { useAuth } from '../context/auth';
+import EventDetail from './EventDetail'
 
 
 export default function HomeGroups() {
@@ -49,17 +50,17 @@ function GroupEvent(props) {
   const {groupEvents} = props;
   return (
     <Row>
-        {groupEvents.map((event) => (
-          <Col>
-            <Card>
-              <Card.Title>{event.eventName}</Card.Title>
-              <Card.Text>
-                <Badge className="Button" color="success" pill>Status</Badge>
-              </Card.Text>
-            </Card>
-          </Col>
-        ))}
-    </Row>                
+      {groupEvents.map((event) => (
+        <Col>
+          <Card>
+            <Card.Title>{event.eventName}</Card.Title>
+            <Card.Text>
+              <Badge className="Button" color="success" pill>Status</Badge>
+              <EventDetail eventId={event.eventId} />
+            </Card.Text>
+          </Card>
+        </Col>
+      ))}
+    </Row>
   )
 }
-
