@@ -4,7 +4,7 @@ import { Badge} from 'reactstrap';
 import '../App.css'
 import { useAuth } from '../context/auth';
 import Event from './Event';
-
+import EventDetail from './EventDetail'
 
 
 
@@ -56,21 +56,17 @@ function GroupEvent(props) {
   return (
     
     <Row>
-        {groupEvents.map((event) => (
-          
-          <Col>
-            <Card className="event-card">
-              <Card.Title>{event.eventName}</Card.Title>
-              <Card.Text>
-                <Badge className="Button" color="success" pill>Status</Badge>
-              </Card.Text>
-            </Card>
-            
-          </Col>
-          
-        ))}
-        
-    </Row>                
+      {groupEvents.map((event) => (
+        <Col>
+          <Card>
+            <Card.Title>{event.eventName}</Card.Title>
+            <Card.Text>
+              <Badge className="Button" color="success" pill>Status</Badge>
+              <EventDetail eventId={event.eventId} />
+            </Card.Text>
+          </Card>
+        </Col>
+      ))}
+    </Row>
   )
 }
-
