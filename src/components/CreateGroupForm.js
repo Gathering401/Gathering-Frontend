@@ -36,7 +36,7 @@ export default function Group() {
 
     return (
         <>
-            <Button onClick={handleShow}>Create a new groupCreate</Button>
+            <Button onClick={handleShow}>Create a new group</Button>
 
             <Modal
                 show={show}

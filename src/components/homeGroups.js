@@ -34,7 +34,7 @@ export default function HomeGroups() {
         <Card>
           <Card.Body>
             <Link to={`/Group/${group.groupId}`}>
-              <Card.Title>{group.groupName}</Card.Title>
+              <Card.Title className="group-title"><h2>{group.groupName}</h2></Card.Title>
             </Link>
             <Container>
               <Card.Text>{group.description}</Card.Text>
@@ -54,10 +54,10 @@ function GroupEvent(props) {
     <Row>
       {groupEvents.map((event) => (
         <Col>
-          <Card>
+          <Card className="event-card">
             <Card.Title>{event.eventName}</Card.Title>
-            <Card.Text>
-              <Badge className="Button" color="success" pill>Status</Badge>
+            <Badge className="Button" color="success">Status</Badge>
+            <Card.Text className="event-button">
               <EventDetail eventId={event.eventId} />
             </Card.Text>
           </Card>
