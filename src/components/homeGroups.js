@@ -48,6 +48,7 @@ export default function HomeGroups() {
   )
 };
 
+
 function GroupEvent(props) {
   const { groupEvents } = props;
   return (
