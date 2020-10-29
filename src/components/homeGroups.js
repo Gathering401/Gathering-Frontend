@@ -3,10 +3,9 @@ import { Card, Container, Col, Row } from 'react-bootstrap';
 import { Badge } from 'reactstrap';
 import '../App.css'
 import { useAuth } from '../context/auth';
-import Event from './Event';
 import EventDetail from './EventDetail';
 import {Link} from 'react-router-dom';
-
+import CreateGroupForm from './CreateGroupForm';
 
 export default function HomeGroups() {
   const { user } = useAuth();
@@ -32,25 +31,25 @@ export default function HomeGroups() {
   console.log(groups);
 
   return (
-    <Row>
-      {groups.map((group) => (
-        <Card className="group-card">
-          <Card.Body>
-            <Link to={`/Group/${group.groupId}`}>
-              <Card.Title className="group-title"><h2>{group.groupName}</h2></Card.Title>
-            </Link>
-            
-            <Container>
-              <Card.Text>{group.description}</Card.Text>
-              <GroupEvent groupEvents={group.groupEvents} />
-              <div className="event-stuff">
-                <Event />
-              </div>
-            </Container>
-          </Card.Body>
-        </Card>
-      ))}
-    </Row>
+    <>
+      <Row>
+        {groups.map((group) => (
+          <Card className="group-card">
+            <Card.Body>
+              <Link to={`/Group/${group.groupId}`}>
+                <Card.Title className="group-title"><h2>{group.groupName}</h2></Card.Title>
+              </Link>
+              <Container>
+                <Card.Text>{group.description}</Card.Text>
+                <GroupEvent groupEvents={group.groupEvents} />
+               
+              </Container>
+            </Card.Body>
+          </Card>
+        ))}
+      </Row>
+      <CreateGroupForm />
+    </>
   )
 }
 
