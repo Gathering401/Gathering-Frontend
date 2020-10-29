@@ -16,6 +16,9 @@ export default function Header() {
           />{' '}
           Gathering
         </Navbar.Brand>
+        <Navbar.Brand className="create-group">
+          Create a Group
+        </Navbar.Brand>
       </Navbar>
     </>
   )
