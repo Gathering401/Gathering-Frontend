@@ -3,6 +3,7 @@ import {Card, Container,Col, Row} from 'react-bootstrap';
 import { Badge} from 'reactstrap';
 import '../App.css'
 import { useAuth } from '../context/auth';
+import EventDetail from './EventDetail'
 
 
 export default function HomeGroups() {
