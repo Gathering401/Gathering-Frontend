@@ -18,6 +18,7 @@
     transition-timing-function: ease;
     background: transparent;
     border: none !important;
+    text-align: center;
 }
 
 .gathering:focus{
@@ -55,10 +56,14 @@
   width: 70%;
 }
 
-.nav-link{
+/* .nav-link{
     margin-top: 50px;
-}
+} */
 
 h1{
     font-size: 20px;
+}
+
+.navbar-expand {
+    justify-content: center;
 }
