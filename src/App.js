@@ -6,16 +6,22 @@ import Event from './components/Event';
 import Auth from './components/auth';
 import NotAuth from './components/auth/NotAuth';
 import EventDetail from './components/EventDetail';
-import Groups from './components/Groups'
 import Group from './components/Group'
 import Header from './components/Header'
+import {Container,Col} from 'react-bootstrap';
+import User from './components/User'
 
 function App() {
 
   return (
     <div className="App">
       <Header />
-      <Switch>
+      <Container>
+        <Col>
+          <User />
+        </Col>
+        <Col>
+        <Switch>
         <Route path="/" exact>
           <NotAuth>
             <Login />
@@ -29,13 +35,16 @@ function App() {
             <Event />
           {/* </Auth> */}
         </Route>
-        <Route path="/Groups" component={Groups} exact/>
         <Route path="/Group/:groupId" component={(routerProps) => <Group groupId={routerProps.match.params.groupId}/>} exact/>
         <Route path="/EventDetail" exact>
           <EventDetail />
         </Route>
        
       </Switch>
+        </Col>
+
+      </Container>
+      
       <Footer />
     </div>
   );
