@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import LoginForm from './auth/LoginForm';
 import Button from 'react-bootstrap/Button';
-import { Modal, Container } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import Register from './RegisterForm';
 
 export default function Login() {
@@ -11,10 +11,12 @@ export default function Login() {
 
     return (
         <>
-        <Container className="login-box">
+        <div className="login-back">
+        <div className="login-box">
             <LoginForm />
             <Button onClick={handleShow}>Click to Register</Button>
-        </Container>
+        </div>
+        </div>
             <Modal
                 show={show}
                 onHide={handleClose}
@@ -28,6 +30,7 @@ export default function Login() {
                     <Register />
                 </Modal.Body>
             </Modal>
+            
         </>
     );
 }
