@@ -202,3 +202,11 @@ footer {
   text-align: left;
   height: 30px;
 }
+
+.createGroupButton
+{
+  position: fixed;
+  bottom: 0;
+  background-color: red;
+  z-index: 1;
+}
