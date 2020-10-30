@@ -34,6 +34,7 @@ function App() {
         <Route path="/EventDetail" exact>
           <EventDetail />
         </Route>
+       
       </Switch>
       <Footer />
     </div>
