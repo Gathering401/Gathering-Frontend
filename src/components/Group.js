@@ -55,17 +55,6 @@ export default function Group(props) {
 
     <Event groupId={groupId} onCreate={getGroup}/>
         </div>
-      {/* <Card className="testing">
-        <Card.Body> 
-          <Container>
-            <Card.Text  className="all-events">
-              <GroupEvents  groupEvents={group.groupEvents} />
-            </Card.Text>
-          </Container>               
-      </Card.Body>
-    </Card>
-
-    <Event groupId={groupId} onCreate={getGroup}/> */}
   </>
   )
 }
