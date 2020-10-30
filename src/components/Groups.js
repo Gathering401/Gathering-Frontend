@@ -4,7 +4,7 @@ import { Badge } from 'reactstrap';
 import '../App.css'
 import { useAuth } from '../context/auth';
 import EventDetail from './EventDetail';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CreateGroupForm from './CreateGroupForm';
 
 
@@ -23,7 +23,7 @@ export default function HomeGroups() {
     const resultBody = await result.json();
 
     return setGroups(resultBody);
-  },[user,userAPI]);
+  }, [user, userAPI]);
   useEffect(() => {
     getGroups();
   }, [getGroups]);
@@ -32,6 +32,7 @@ export default function HomeGroups() {
 
   return (
     <>
+      <CreateGroupForm onCreate={getGroups} />
       <Row>
         {groups.map((group) => (
           <Card className="group-card">
@@ -42,13 +43,12 @@ export default function HomeGroups() {
               <Container>
                 <Card.Text>{group.description}</Card.Text>
                 <GroupEvent groupEvents={group.groupEvents} />
-               
+
               </Container>
             </Card.Body>
           </Card>
         ))}
       </Row>
-      <CreateGroupForm onCreate={getGroups} />
     </>
   )
 }
@@ -71,7 +71,7 @@ function GroupEvent(props) {
         </Col>
       ))}
     </Row>
-    
+
   )
 }
 

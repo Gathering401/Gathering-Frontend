@@ -1,10 +1,19 @@
+a {
+  text-decoration: none;
+  color: #282c34 !important;
+}
+
+h2:hover{
+  opacity: .8;
+}
+
 .App {
   text-align: center;
   background-color: #586F7C;
+  min-height: 100vw;
 }
 
 .App-logo {
-  height: 40vmin;
   pointer-events: none;
 }
 
@@ -47,7 +56,6 @@
   ;
 
   padding: 15px;
-  width: 45vw;
   margin-top: 150px;
   background-color: teal;
   margin: auto;
@@ -71,7 +79,6 @@
   ;
 
   padding: 15px;
-  width: vw;
   margin-top: 150px;
   background-color: #586F7C;
   margin: auto;
@@ -88,21 +95,15 @@
     0 41.8px 33.4px rgba(0, 0, 0, 0.086),
     0 100px 80px rgba(0, 0, 0, 0.12)
   ;
-
-    width: 75vw;
     margin: 5px auto;
     background-color: #BFD7EA;
     border-radius: 20px;
     margin-bottom: 15px;
-    height: 250px;
-    
 }
 
 .group-back {
   background-color: teal;
-  width: 90vw;
   margin: auto;
-  color: white;
   padding-top: 30px;
 }
 
@@ -116,10 +117,8 @@
     0 100px 80px rgba(0, 0, 0, 0.12)
   ;
     border-radius: 10px;
-    width: 225px;
     margin: auto;
-    opacity: 0.8;
-    background-color: #087E8B;
+    background-color: #3d4d57;
     color: white;
 }
 
@@ -156,11 +155,9 @@
 
 .testing {
   margin-top: 75px;
-  width: 75vw;
   background-color: #BFD7EA;
   border-radius: 30px;
-  height: 90vh;
-  /* flex-direction: row-reverse; */
+  flex-direction: row-reverse;
   flex-wrap: wrap;
 }
 
@@ -174,11 +171,9 @@
 }
 
 .event-top {
-  background-color: teal;
-  width: 90vw;
+  background-color:whitesmoke;
   margin: auto;
-  color: white;
-  height: 75vw;
+  color: #343A40;
   padding-top: 30px;
 }
 
@@ -189,8 +184,6 @@
 .Button:hover {
   opacity: 1;
 }
-
-
 
 footer {
   position: fixed;
@@ -203,10 +196,32 @@ footer {
   height: 30px;
 }
 
-.createGroupButton
-{
-  position: fixed;
-  bottom: 0;
-  background-color: red;
-  z-index: 1;
+.container{
+  margin: 0vw;
+}
+
+.spacer{
+  height: 72px;
+}
+
+.card-body{
+  background-color: whitesmoke;
+  border-radius: 20px;
+}
+
+button{
+  background-color: #343A40 !important;
+  border-color:#343A40 !important;
+}
+
+button:focus {
+  outline: 0 !important;
+}
+
+/* .no-stretch {
+  flex: 0 0 1 !important;
+} */
+
+.createGroupButton{
+  margin-top: 7px;
 }
