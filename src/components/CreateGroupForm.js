@@ -5,9 +5,13 @@ import Button from 'react-bootstrap/Button';
 import { Modal } from 'react-bootstrap';
 
 
-export default function Group() {
+export default function Group(props) {
+    const {onCreate} = props;
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        onCreate&&onCreate();
+    };
     const handleShow = () => setShow(true);
 
 
@@ -22,6 +26,7 @@ export default function Group() {
         if (!await groupCreate(groupName.value, location.value, description.value)) {
             target.reset();
         }
+        handleClose();
     };
 
     async function groupCreate(groupName, location, description) {

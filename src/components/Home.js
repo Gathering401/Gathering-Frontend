@@ -1,10 +1,21 @@
 import React from 'react';
-import Groups from './homeGroups';
+import {Container, Row, Col} from 'react-bootstrap';
+//import User from './User';
+import Groups from './Groups';
 
 export default function Home() {
   return (
-    <>  
-      <Groups />
+    <>
+     <Container>
+        <Row>
+          <Col>
+            {/* <User /> */}
+          </Col>
+          <Col xs={12}>
+            <Groups />
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }
