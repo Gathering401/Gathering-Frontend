@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import {Card, Col, Container, Row} from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 import '../App.css'
 import { useAuth } from '../context/auth';
 import Event from './Event';
+import AddUser from './AddUser'
+
 
 import EventDetail from './EventDetail';
 import { Badge } from 'reactstrap';
@@ -12,55 +14,56 @@ export default function Group(props) {
   const { user } = useAuth();
   const userAPI = `https://gathering.azurewebsites.net/api/Group/${groupId}`;
   const [group, setGroup] = useState({});
-  
-  const getGroup = useCallback( async function getGroup() {
-    if(!user) {
+
+  const getGroup = useCallback(async function getGroup() {
+    if (!user) {
       setGroup({})
       return;
     }
-    const result = await fetch(`${userAPI}`,{
+    const result = await fetch(`${userAPI}`, {
       headers: {
         'Authorization': `Bearer ${user.token}`
       },
     });
     const resultBody = await result.json();
     return setGroup(resultBody);
-  },[user,userAPI])
+  }, [user, userAPI])
 
   useEffect(() => {
     getGroup();
-  },[getGroup]);
+  }, [getGroup]);
 
-  if(!group.groupEvents) {
-    return(
+  if (!group.groupEvents) {
+    return (
       <>
       </>
     )
   }
   return (
     <>
-    <div className="event-top">
+      <div className="event-top">
         <h1>{group.groupName}</h1>
-          <Card.Text>{group.description}</Card.Text>
-          <Card.Text>Location: {group.location}</Card.Text>
-          <Card className="testing">
-        <Card.Body> 
-          <Container>
-            <Card.Text  className="all-events">
-              <GroupEvents  groupEvents={group.groupEvents} />
-            </Card.Text>
-          </Container>               
-      </Card.Body>
-    </Card>
+        <Card.Text>{group.description}</Card.Text>
+        <Card.Text>Location: {group.location}</Card.Text>
+        <Card className="testing">
+          <Card.Body>
+            <Container>
+              <Card.Text className="all-events">
+                <GroupEvents groupEvents={group.groupEvents} />
+              </Card.Text>
+            </Container>
+          </Card.Body>
+        </Card>
 
-    <Event groupId={groupId} onCreate={getGroup}/>
-        </div>
-  </>
+        <Event groupId={groupId} onCreate={getGroup} />
+        <AddUser groupId={groupId}/>
+      </div>
+    </>
   )
 }
 
 function GroupEvents(props) {
-  const {groupEvents} = props;
+  const { groupEvents } = props;
 
   return (
     <Row>
