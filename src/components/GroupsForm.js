@@ -1,79 +1,68 @@
+import React, { useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import React, { useEffect, useState } from 'react';
-import useAuth from '../contexts/auth';
+import {useAuth} from '../context/auth';
 
-const mapUserIDToGroup = user => ({
-    id: user.id,
-    email: user.email,
-    phone: user.phone,
-  });
-  
-  export default function UserID() {
-    // eslint-disable-next-line no-unused-vars
-    const { user } = useAuth();
-    const userAPI = 'https://gathering.azurewebsites.net/api/Group';
-    // eslint-disable-next-line no-unused-vars
-    const [User, getUser] = useState([]);
-  
-    useEffect(() => {
-      console.log('Run me once when the component loads');
-  
-      async function fetchUserID() {
+const userAPI = 'https://gathering.azurewebsites.net/api';
 
-        let response = await fetch(userAPI);
-        let tasks = await response.json();
-        console.log(tasks);
-        // eslint-disable-next-line no-undef
-        setUsers(User.map(mapUserIDToGroup));
-      }
-      fetchUserID();
-  
-      // "Dispose" action
-      return () => {
-        console.log('Run me when component goes away')
-      }
-    }, );
-  
+export default function AddUser(props) {
+  const {groupId} = props
+  const [show, setShow] = useState(false);
+  const {user} = useAuth();
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-
-// eslint-disable-next-line no-unused-vars
-class NameForm extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {value: ''};
-  
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
-  
-    handleChange(event) {
-      this.setState({value: event.target.value});
-    }
-  
-    handleSubmit(event) {
-      alert('A name was submitted: ' + this.state.value);
-      event.preventDefault();
-    }
-  
-    render() {
-      return (
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            UserID:
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-          </label>
-          <label>
-            Phone:
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-          </label>
-          <label>
-              Email: 
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-          </label>
-          <Button type="submit" value="Submit" pill />
-        </form>
-      );
-    }
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const { target } = e;
+    const { invitedUser } = target.elements;
+    const newUser = invitedUser.value
+    if (!await AddUser(newUser)) {
+      target.reset();
     }
   }
+
+  async function AddUser(invitedUser) {
+    const userToken = user.token;
+    const result = await fetch(`${userAPI}/Group/${groupId}/User/${invitedUser}`, {
+      method: 'post',
+      headers: {
+        'Authorization': `Bearer ${userToken}`, 
+      },
+    });
+    const resultBody = await result
+    console.log(resultBody)
+    handleClose();
+  }
+
+  return (
+    <>
+      <Button onClick={handleShow}>Add User</Button>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdropClassName="static"
+        keyboard={true}
+      >
+        <Modal.Header>
+          <Modal.Title>
+            Add a User
+        </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form className="event-form" onSubmit={handleSubmit}>
+            <Form.Group controlId="">
+              <Form.Label></Form.Label>
+              <Form.Control name="invitedUser" type="input" placeholder="User Id" />
+            </Form.Group>
+            <Button type="submit">Add User</Button>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+        </Modal.Footer>
+      </Modal>
+    </>
+  )
+}

@@ -3,9 +3,9 @@ import {Card, Col, Container, Row} from 'react-bootstrap';
 import '../App.css'
 import { useAuth } from '../context/auth';
 import Event from './Event';
+
 import EventDetail from './EventDetail';
 import { Badge } from 'reactstrap';
-
 
 export default function Group(props) {
   const { groupId } = props;
