@@ -21,10 +21,10 @@ function App() {
   <div className="spacer">{" "}</div>
         </Row>
         <Row>
-          <Col lg={4} md={4} sm={4} xl={8}>
+          <Col lg={2} md={2} sm={2} >
             <User />
           </Col>
-          <Col lg={8} md={8} sm={8} xl={8} className="top-space">
+          <Col lg={8} md={8} sm={8} className="top-space">
             <Switch>
               <Route path="/" exact>
                 <NotAuth>
@@ -44,6 +44,8 @@ function App() {
                 <EventDetail />
               </Route>
             </Switch>
+          </Col >
+          <Col lg={2} md={2} sm={2}>
           </Col>
         </Row>
         {/* <Footer /> */}

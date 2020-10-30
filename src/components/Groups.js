@@ -33,22 +33,23 @@ export default function HomeGroups() {
   return (
     <>
       <CreateGroupForm onCreate={getGroups} />
-      <Row>
+      <Container>
         {groups.map((group) => (
-          <Card className="group-card">
-            <Card.Body>
-              <Link to={`/Group/${group.groupId}`}>
-                <Card.Title className="group-title"><h2>{group.groupName}</h2></Card.Title>
-              </Link>
-              <Container>
-                <Card.Text>{group.description}</Card.Text>
-                <GroupEvent groupEvents={group.groupEvents} />
-
-              </Container>
-            </Card.Body>
-          </Card>
+          <Row>
+            <Col>
+              <Card className="group-card">
+                <Card.Body>
+                  <Link to={`/Group/${group.groupId}`}>
+                    <Card.Title className="group-title"><h2>{group.groupName}</h2></Card.Title>
+                  </Link>
+                  <Card.Text>{group.description}</Card.Text>
+                  <GroupEvent groupEvents={group.groupEvents} />
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
         ))}
-      </Row>
+      </Container>
     </>
   )
 }
@@ -59,16 +60,14 @@ function GroupEvent(props) {
   return (
     <Row>
       {groupEvents.map((event) => (
-        <Col>
           <Card className="event-card">
             <Card.Title>{event.eventName}</Card.Title>
-            <Badge className="Button" color="success">Status</Badge>
+            <Badge className="Button" color="success">Going</Badge>
             <Card.Text className="event-button">
               <br></br>
               <EventDetail eventId={event.eventId} />
             </Card.Text>
           </Card>
-        </Col>
       ))}
     </Row>
 

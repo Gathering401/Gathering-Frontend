@@ -69,7 +69,7 @@ function GroupEvents(props) {
         <Col>
           <Card className="event-card">
             <Card.Title>{event.eventName}</Card.Title>
-            <Badge className="Button" color="success">Status</Badge>
+            <Badge className="Button" color="success">Going</Badge>
             <Card.Text className="event-button">
               <br></br>
               <EventDetail eventId={event.eventId} />

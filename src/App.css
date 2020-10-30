@@ -126,6 +126,9 @@ h2:hover{
   border-style: hidden;
   padding: 1px;
   padding-bottom: 5px;
+  margin-bottom: 10px;
+  min-width: 200px;
+  max-width: 250px;
 }
 
 .event-button {
@@ -196,9 +199,6 @@ footer {
   height: 30px;
 }
 
-.container{
-  margin: 0vw;
-}
 
 .spacer{
   height: 72px;
@@ -224,4 +224,8 @@ button:focus {
 
 .createGroupButton{
   margin-top: 7px;
+}
+
+h3 {
+  color: #343A40 !important;
 }
