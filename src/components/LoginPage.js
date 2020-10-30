@@ -11,10 +11,12 @@ export default function Login() {
 
     return (
         <>
-        <Container className="login-box">
+        <div className="login-back">
+        <div className="login-box">
             <LoginForm />
             <Button onClick={handleShow}>Click to Register</Button>
-        </Container>
+        </div>
+        </div>
             <Modal
                 show={show}
                 onHide={handleClose}
@@ -28,6 +30,7 @@ export default function Login() {
                     <Register />
                 </Modal.Body>
             </Modal>
+            
         </>
     );
 }
