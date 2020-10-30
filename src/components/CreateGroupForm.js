@@ -42,7 +42,7 @@ export default function Group(props) {
 
     return (
         <>
-            <Button className="bottom-button" onClick={handleShow}>Create a new group</Button>
+            <Button onClick={handleShow} className="createGroupButton">Create a new group</Button>
 
             <Modal
                 show={show}
