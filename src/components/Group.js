@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import {Card, Col, Container} from 'react-bootstrap';
+import {Card, Col, Container, Row} from 'react-bootstrap';
 import '../App.css'
 import { useAuth } from '../context/auth';
 import Event from './Event';
 
-
+import EventDetail from './EventDetail';
+import { Badge } from 'reactstrap';
 
 export default function Group(props) {
   const { groupId } = props;
@@ -38,22 +39,22 @@ export default function Group(props) {
   }
   return (
     <>
-      <Card>
-        <Card.Body>
-          <Card.Title>{group.groupName}</Card.Title>
+    <div className="event-top">
+        <h1>{group.groupName}</h1>
           <Card.Text>{group.description}</Card.Text>
-          <Card.Text>{group.location}</Card.Text>
+          <Card.Text>Location: {group.location}</Card.Text>
+          <Card className="testing">
+        <Card.Body> 
           <Container>
-            <Card.Text>
-              <Col>
-              </Col>
-              <GroupEvents groupEvents={group.groupEvents} />
+            <Card.Text  className="all-events">
+              <GroupEvents  groupEvents={group.groupEvents} />
             </Card.Text>
           </Container>               
       </Card.Body>
     </Card>
 
     <Event groupId={groupId} onCreate={getGroup}/>
+        </div>
   </>
   )
 }
@@ -62,12 +63,21 @@ function GroupEvents(props) {
   const {groupEvents} = props;
 
   return (
-    <>
+    <Row>
       {groupEvents.map((event) => (
-        <div>
-          <h3>{event.eventName}</h3>
-        </div>
+        <Col>
+          <Card className="event-card">
+            <Card.Title>{event.eventName}</Card.Title>
+            <Badge className="Button" color="success">Status</Badge>
+            <Card.Text className="event-button">
+              <br></br>
+              <EventDetail eventId={event.eventId} />
+            </Card.Text>
+          </Card>
+          <br></br>
+          <br></br>
+        </Col>
       ))}
-    </>
+    </Row>
   )
 }
