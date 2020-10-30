@@ -32,7 +32,9 @@ export default function EventForm(props) {
         location: address.value + " " + city.value + ", " + state.value + " " + zip.value,
         description: description.value
     }
-    if (!await CreateEvent(newEvent)) {
+    
+    if (await CreateEvent(newEvent)) {
+      handleClose();
       target.reset();
     }
   }
@@ -47,9 +49,14 @@ export default function EventForm(props) {
       },
       body: JSON.stringify(newEvent),
     });
-    const resultBody = await result
-    console.log(resultBody)
-    handleClose();
+
+    if(result.ok){
+      return true;
+    }
+    const errors = await result.json();
+    console.log(errors);
+
+    return false;
   }
 
   return (
