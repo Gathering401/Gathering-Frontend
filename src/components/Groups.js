@@ -4,7 +4,7 @@ import { Badge } from 'reactstrap';
 import '../App.css'
 import { useAuth } from '../context/auth';
 import EventDetail from './EventDetail';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CreateGroupForm from './CreateGroupForm';
 
 
@@ -23,7 +23,7 @@ export default function HomeGroups() {
     const resultBody = await result.json();
 
     return setGroups(resultBody);
-  },[user,userAPI]);
+  }, [user, userAPI]);
   useEffect(() => {
     getGroups();
   }, [getGroups]);
@@ -32,23 +32,24 @@ export default function HomeGroups() {
 
   return (
     <>
-      <Row>
-        {groups.map((group) => (
-          <Card className="group-card">
-            <Card.Body>
-              <Link to={`/Group/${group.groupId}`}>
-                <Card.Title className="group-title"><h2>{group.groupName}</h2></Card.Title>
-              </Link>
-              <Container>
-                <Card.Text>{group.description}</Card.Text>
-                <GroupEvent groupEvents={group.groupEvents} />
-               
-              </Container>
-            </Card.Body>
-          </Card>
-        ))}
-      </Row>
       <CreateGroupForm onCreate={getGroups} />
+      <Container>
+        {groups.map((group) => (
+          <Row>
+            <Col>
+              <Card className="group-card">
+                <Card.Body>
+                  <Link to={`/Group/${group.groupId}`}>
+                    <Card.Title className="group-title"><h2>{group.groupName}</h2></Card.Title>
+                  </Link>
+                  <Card.Text>{group.description}</Card.Text>
+                  <GroupEvent groupEvents={group.groupEvents} />
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        ))}
+      </Container>
     </>
   )
 }
@@ -59,19 +60,17 @@ function GroupEvent(props) {
   return (
     <Row>
       {groupEvents.map((event) => (
-        <Col>
           <Card className="event-card">
             <Card.Title>{event.eventName}</Card.Title>
-            <Badge className="Button" color="success">Status</Badge>
+            <Badge className="Button" color="success">Going</Badge>
             <Card.Text className="event-button">
               <br></br>
               <EventDetail eventId={event.eventId} />
             </Card.Text>
           </Card>
-        </Col>
       ))}
     </Row>
-    
+
   )
 }
 

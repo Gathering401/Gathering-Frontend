@@ -2,6 +2,7 @@ import React from 'react'
 import {Container, Figure} from 'react-bootstrap'
 import logo from '../logo.svg';
 import {useAuth} from '../context/auth'
+import '../App.css';
 
 export default function User() {
   const {user} = useAuth();

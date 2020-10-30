@@ -1,12 +1,12 @@
 import React from 'react';
-import {Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 //import User from './User';
 import Groups from './Groups';
 
 export default function Home() {
   return (
     <>
-     <Container>
+      <Container>
         <Row>
           <Col>
             {/* <User /> */}

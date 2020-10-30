@@ -3,6 +3,7 @@ import { useAuth } from '../context/auth';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Modal } from 'react-bootstrap';
+import '../App.css';
 
 
 export default function Group(props) {
