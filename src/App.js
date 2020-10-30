@@ -18,11 +18,13 @@ function App() {
       <Header />
       <Container>
         <Row >
-  <div className="spacer">{" "}</div>
+          <div className="spacer">{" "}</div>
         </Row>
         <Row>
           <Col lg={2} md={2} sm={2} >
-            <User />
+            <Auth>
+              <User />
+            </Auth>
           </Col>
           <Col lg={8} md={8} sm={8} className="top-space">
             <Switch>
