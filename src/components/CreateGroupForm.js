@@ -3,6 +3,7 @@ import { useAuth } from '../context/auth';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Modal } from 'react-bootstrap';
+import '../App.css';
 
 
 export default function Group(props) {
@@ -42,7 +43,7 @@ export default function Group(props) {
 
     return (
         <>
-            <Button className="bottom-button" onClick={handleShow}>Create a new group</Button>
+            <Button onClick={handleShow} className="createGroupButton">Create a new group</Button>
 
             <Modal
                 show={show}

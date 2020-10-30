@@ -16,7 +16,7 @@ export default function Header() {
             height="60"
             className="d-inline-block align-top"
           />{' '} */}
-          <button className="gathering"><h1>Gathering</h1></button>
+          <h1 className="gathering">Gathering</h1>
         </Navbar.Brand>
         {/* <Nav.Item>
           <Nav.Link eventKey="link-1">Link</Nav.Link>

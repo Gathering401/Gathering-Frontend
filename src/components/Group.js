@@ -3,9 +3,7 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 import '../App.css'
 import { useAuth } from '../context/auth';
 import Event from './Event';
-import AddUser from './AddUser'
-
-
+import AddUser from './AddUser';
 import EventDetail from './EventDetail';
 import { Badge } from 'reactstrap';
 
@@ -45,18 +43,18 @@ export default function Group(props) {
         <h1>{group.groupName}</h1>
         <Card.Text>{group.description}</Card.Text>
         <Card.Text>Location: {group.location}</Card.Text>
-        <Card className="testing">
+        <Card>
           <Card.Body>
             <Container>
               <Card.Text className="all-events">
                 <GroupEvents groupEvents={group.groupEvents} />
               </Card.Text>
             </Container>
+            <Event groupId={groupId} onCreate={getGroup} />
+            {"  "}
+            <AddUser groupId={groupId} />
           </Card.Body>
         </Card>
-
-        <Event groupId={groupId} onCreate={getGroup} />
-        <AddUser groupId={groupId}/>
       </div>
     </>
   )
@@ -71,7 +69,7 @@ function GroupEvents(props) {
         <Col>
           <Card className="event-card">
             <Card.Title>{event.eventName}</Card.Title>
-            <Badge className="Button" color="success">Status</Badge>
+            <Badge className="Button" color="success">Going</Badge>
             <Card.Text className="event-button">
               <br></br>
               <EventDetail eventId={event.eventId} />
