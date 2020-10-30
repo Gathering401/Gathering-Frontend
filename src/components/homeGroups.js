@@ -6,6 +6,7 @@ import { useAuth } from '../context/auth';
 import EventDetail from './EventDetail';
 import {Link} from 'react-router-dom';
 import CreateGroupForm from './CreateGroupForm';
+import User from './User';
 
 export default function HomeGroups() {
   const { user } = useAuth();
@@ -31,8 +32,8 @@ export default function HomeGroups() {
   console.log(groups);
 
   return (
-    <>
-      <Row>
+    <div className="group-back">
+      <User />
         {groups.map((group) => (
           <Card className="group-card">
             <Card.Body>
@@ -42,14 +43,12 @@ export default function HomeGroups() {
               <Container>
                 <Card.Text>{group.description}</Card.Text>
                 <GroupEvent groupEvents={group.groupEvents} />
-               
               </Container>
             </Card.Body>
           </Card>
         ))}
-      </Row>
       <CreateGroupForm />
-    </>
+      </div>
   )
 }
 
@@ -68,10 +67,11 @@ function GroupEvent(props) {
               <EventDetail eventId={event.eventId} />
             </Card.Text>
           </Card>
+          <br></br>
+          <br></br>
         </Col>
       ))}
     </Row>
-    
   )
 }
 

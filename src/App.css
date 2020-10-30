@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   background-color: #586F7C;
-  min-height: 100vh;
 }
 
 .App-logo {
@@ -24,6 +23,9 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+.bottom-button {
+  margin-bottom: 100px;
 }
 
 .App-link {
@@ -49,6 +51,25 @@
   margin-top: 150px;
 }
 
+.testing {
+  box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12)
+  ;
+
+  padding: 15px;
+  width: vw;
+  margin-top: 150px;
+  background-color: #586F7C;
+  margin: auto;
+}
+
+
+
 .group-card {
     box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
@@ -59,11 +80,22 @@
     0 100px 80px rgba(0, 0, 0, 0.12)
   ;
 
-    width: 100vw;
+    width: 75vw;
     margin: 5px auto;
-    background: white;
+    background-color: #BFD7EA;
     border-radius: 20px;
+    margin-bottom: 15px;
+    height: 250px;
     
+}
+
+.group-back {
+  background-color: teal;
+  width: 90vw;
+  margin: auto;
+  color: white;
+  /* height: 100vw; */
+  padding-top: 30px;
 }
 
 .event-card {
@@ -78,11 +110,15 @@
     border-radius: 10px;
     width: 225px;
     margin: auto;
+    opacity: 0.8;
+    background-color: #087E8B;
+    color: white;
 }
 
 .event-card {
   border-style: hidden;
   padding: 1px;
+  padding-bottom: 5px;
 }
 
 .event-button {
@@ -90,6 +126,8 @@
   margin-top: -15px;
   border-style: hidden;
 }
+
+
 
 .Button {
   width: 55px;
@@ -110,7 +148,15 @@
   padding-bottom: 15px;
 }
 
-
+.testing {
+  margin-top: 75px;
+  width: 75vw;
+  background-color: #BFD7EA;
+  border-radius: 30px;
+  height: 90vh;
+  /* flex-direction: row-reverse; */
+  flex-wrap: wrap;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -121,6 +167,15 @@
   }
 }
 
+.event-top {
+  background-color: teal;
+  width: 90vw;
+  margin: auto;
+  color: white;
+  height: 75vw;
+  padding-top: 30px;
+}
+
 .Button {
   opacity: .8;
 }
@@ -128,6 +183,8 @@
 .Button:hover {
   opacity: 1;
 }
+
+
 
 footer {
   position: fixed;

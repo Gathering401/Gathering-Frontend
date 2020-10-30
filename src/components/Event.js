@@ -22,14 +22,15 @@ export default function EventForm(props) {
     e.preventDefault();
     const { target } = e;
 
-    const { eventName, start, end, food, cost, address, city, state, zip } = target.elements;
+    const { eventName, start, end, food, cost, address, city, state, zip, description } = target.elements;
     const newEvent = {
       eventName: eventName.value,
         start:start.value,
         end: end.value,
         food: food.value,
         cost: cost.value,
-        location: address.value + " " + city.value + ", " + state.value + " " + zip.value
+        location: address.value + " " + city.value + ", " + state.value + " " + zip.value,
+        description: description.value
     }
     if (!await CreateEvent(newEvent)) {
       target.reset();
