@@ -25,3 +25,9 @@ Using Twilio for event notifications through text messages. People can respond t
 
 As for where we want to take this, a few of the features that we've thought of so far include (in no particular order):
 
+* Some sort of calendar (long term)
+* Button to leave a group
+* Validation to make sure proper information is entered when creating a user
+* Some sort of profile page
+* Logo
+* Maybe styling stuff?
