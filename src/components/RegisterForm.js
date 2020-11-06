@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 export default function Register() {
     const { user, login } = useAuth();
-    const registerAPI = 'https://gathering.azurewebsites.net/api/User/Register';
+    const registerAPI = `${process.env.API_URI}/User/Register`;
 
     if (user) {
         return(<h2>You're already logged in!</h2>);

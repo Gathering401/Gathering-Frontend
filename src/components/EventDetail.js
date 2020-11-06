@@ -7,7 +7,7 @@ export default function EventDetailsModal(props) {
   const { user } = useAuth();
   const { eventId } = props;
 
-  const eventAPI = `https://gathering.azurewebsites.net/api/Event/${eventId}`;
+  const eventAPI = `${process.env.API_URI}/Event/${eventId}`;
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
