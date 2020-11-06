@@ -19,3 +19,15 @@ Using Twilio for event notifications through text messages. People can respond t
 ## Deploy Status Badge
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/28c7f649-667c-468b-b0f2-3e0f3c30d11a/deploy-status)](https://app.netlify.com/sites/gathering401/deploys)
+
+
+## Goals for the Future
+
+As for where we want to take this, a few of the features that we've thought of so far include (in no particular order):
+
+* Some sort of calendar (long term)
+* Button to leave a group
+* Validation to make sure proper information is entered when creating a user
+* Some sort of profile page
+* Logo
+* Maybe styling stuff?
