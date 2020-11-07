@@ -10,7 +10,7 @@ import { Badge } from 'reactstrap';
 export default function Group(props) {
   const { groupId } = props;
   const { user } = useAuth();
-  const userAPI = `${process.env.API_URI}/Group/${groupId}`;
+  const userAPI = `${process.env.REACT_APP_API_URI}/Group/${groupId}`;
   const [group, setGroup] = useState({});
 
   const getGroup = useCallback(async function getGroup() {
@@ -66,7 +66,7 @@ function GroupEvents(props) {
   return (
     <Row>
       {groupEvents.map((event) => (
-        <Col>
+        <Col key={event.eventId}>
           <Card className="event-card">
             <Card.Title>{event.eventName}</Card.Title>
             <Badge className="Button" color="success">Going</Badge>

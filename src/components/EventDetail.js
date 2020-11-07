@@ -7,7 +7,7 @@ export default function EventDetailsModal(props) {
   const { user } = useAuth();
   const { eventId } = props;
 
-  const eventAPI = `${process.env.API_URI}/Event/${eventId}`;
+  const eventAPI = `${process.env.REACT_APP_API_URI}/Event/${eventId}`;
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
