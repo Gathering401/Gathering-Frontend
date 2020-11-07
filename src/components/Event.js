@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { Col } from 'react-bootstrap';
 import {useAuth} from '../context/auth';
 
-const userAPI = 'https://gathering.azurewebsites.net/api';
+const userAPI = process.env.API_URI;
 
 export default function EventForm(props) {
   const {groupId, onCreate} = props

@@ -10,7 +10,7 @@ import CreateGroupForm from './CreateGroupForm';
 
 export default function HomeGroups() {
   const { user } = useAuth();
-  const userAPI = 'https://gathering.azurewebsites.net/api/Group';
+  const userAPI = `${process.env.API_URI}/Group`;
   const [groups, setGroups] = useState([]);
 
   const getGroups = useCallback(async function getGroups() {
