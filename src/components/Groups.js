@@ -10,7 +10,7 @@ import CreateGroupForm from './CreateGroupForm';
 
 export default function HomeGroups() {
   const { user } = useAuth();
-  const userAPI = `${process.env.API_URI}/Group`;
+  const userAPI = `${process.env.REACT_APP_API_URI}/Group`;
   const [groups, setGroups] = useState([]);
 
   const getGroups = useCallback(async function getGroups() {
@@ -35,7 +35,7 @@ export default function HomeGroups() {
       <CreateGroupForm onCreate={getGroups} />
       <Container>
         {groups.map((group) => (
-          <Row>
+          <Row key={group.groupId}>
             <Col>
               <Card className="group-card">
                 <Card.Body>

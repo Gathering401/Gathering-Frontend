@@ -17,7 +17,7 @@ export default function Group(props) {
 
 
     const { user } = useAuth();
-    const groupAPI = `${process.env.API_URI}/Group`;
+    const groupAPI = `${process.env.REACT_APP_API_URI}/Group`;
 
     async function handleSubmit(e) {
         e.preventDefault();

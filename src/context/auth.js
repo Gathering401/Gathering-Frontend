@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 import cookie from 'react-cookies';
 const cookieName = 'auth';
 
-const usersAPI = `${process.env.API_URI}/User`;
+const usersAPI = `${process.env.REACT_APP_API_URI}/User`;
 
 export const AuthContext = React.createContext();
 

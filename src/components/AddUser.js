@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import {useAuth} from '../context/auth';
 
-const userAPI = process.env.API_URI;
+const userAPI = process.env.REACT_APP_API_URI;
 
 export default function AddUser(props) {
   const {groupId} = props
