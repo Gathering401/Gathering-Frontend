@@ -4,6 +4,7 @@ import '../App.css'
 import { useAuth } from '../context/auth';
 import Event from './Event';
 import AddUser from './AddUser';
+import LeaveGroup from './LeaveGroup';
 import EventDetail from './EventDetail';
 import { Badge } from 'reactstrap';
 
@@ -46,13 +47,14 @@ export default function Group(props) {
         <Card>
           <Card.Body>
             <Container>
-              <Card.Text className="all-events">
+              <div className="all-events">
                 <GroupEvents groupEvents={group.groupEvents} />
-              </Card.Text>
+              </div>
             </Container>
             <Event groupId={groupId} onCreate={getGroup} />
             {"  "}
             <AddUser groupId={groupId} />
+            <LeaveGroup groupId={groupId} userId={user.id} />
           </Card.Body>
         </Card>
       </div>
