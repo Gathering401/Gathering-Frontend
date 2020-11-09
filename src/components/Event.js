@@ -103,7 +103,7 @@ export default function EventForm(props) {
                     <option>Choose...</option>
                     {
                       states.map(state => (
-                        <option value={state.value}>{state.name}</option>
+                        <option value={state.value} key={state.value}>{state.name}</option>
                       ))
                     }
                   </Form.Control>

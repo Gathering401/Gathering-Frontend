@@ -35,7 +35,7 @@ export default function HomeGroups() {
       <CreateGroupForm onCreate={getGroups} />
       <Container>
         {groups.map((group) => (
-          <Row>
+          <Row key={group.groupId}>
             <Col>
               <Card className="group-card">
                 <Card.Body>
@@ -60,7 +60,7 @@ function GroupEvent(props) {
   return (
     <Row>
       {groupEvents.map((event) => (
-          <Card className="event-card">
+          <Card className="event-card" key={event.eventId}>
             <Card.Title>{event.eventName}</Card.Title>
             <Badge className="Button" color="success">Going</Badge>
             <Card.Text className="event-button">
