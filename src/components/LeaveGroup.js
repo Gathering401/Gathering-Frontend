@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import {useAuth} from '../context/auth';
 
-const userAPI = 'https://gathering.azurewebsites.net/api';
+const userAPI = process.env.REACT_APP_API_URI;
 
 export default function LeaveGroup(props) {
   const {groupId, userId} = props;

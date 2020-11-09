@@ -11,7 +11,7 @@ import { Badge } from 'reactstrap';
 export default function Group(props) {
   const { groupId } = props;
   const { user } = useAuth();
-  const userAPI = `https://gathering.azurewebsites.net/api/Group/${groupId}`;
+  const userAPI = `${process.env.REACT_APP_API_URI}/Group/${groupId}`;
   const [group, setGroup] = useState({});
 
   const getGroup = useCallback(async function getGroup() {
