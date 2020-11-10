@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { useAuth } from '../context/auth';
+import DeleteEvent from './DeleteEvent';
 
 export default function EventDetailsModal(props) {
   const { user } = useAuth();
-  const { eventId } = props;
+  const { eventId, groupId } = props;
 
   const eventAPI = `${process.env.REACT_APP_API_URI}/Event/${eventId}`;
 
@@ -59,6 +60,7 @@ export default function EventDetailsModal(props) {
               <p>{eventDetails.eventHost ? `Host: ${eventDetails.eventHost}` : ""}</p>
           </Modal.Body>
           <Modal.Footer>
+            <DeleteEvent eventId={eventDetails.eventId} group={groupId}/>
             <Button onClick={handleClose}>Close</Button>
           </Modal.Footer>
         </Modal>
