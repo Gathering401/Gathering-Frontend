@@ -48,7 +48,7 @@ export default function Group(props) {
           <Card.Body>
             <Container>
               <div className="all-events">
-                <GroupEvents groupEvents={group.groupEvents} />
+                <GroupEvents groupEvents={group.groupEvents} group={groupId}/>
               </div>
             </Container>
             <Event groupId={groupId} onCreate={getGroup} />
@@ -63,7 +63,7 @@ export default function Group(props) {
 }
 
 function GroupEvents(props) {
-  const { groupEvents } = props;
+  const { groupEvents, group } = props;
 
   return (
     <Row>
@@ -74,7 +74,7 @@ function GroupEvents(props) {
             <Badge className="Button" color="success">Going</Badge>
             <Card.Text className="event-button">
               <br></br>
-              <EventDetail eventId={event.eventId} />
+              <EventDetail eventId={event.eventId} groupId={group}/>
             </Card.Text>
           </Card>
           <br></br>
