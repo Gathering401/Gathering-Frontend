@@ -229,3 +229,8 @@ button:focus {
 h3 {
   color: #343A40 !important;
 }
+
+.leave-group {
+  color: white !important;
+  text-decoration: none !important;
+}
