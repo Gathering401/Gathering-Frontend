@@ -24,7 +24,7 @@ export default function DeleteEvent(props) {
 
     if(result.ok) {
       close();
-      window.location.reload(false);
+      window.location.reload();
       return true;
     }
     const errors = await result.json();
