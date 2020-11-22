@@ -28,7 +28,7 @@ export default function HomeGroups() {
     getGroups();
   }, [getGroups]);
 
-  console.log(groups);
+  console.log('this is groups', groups);
 
   return (
     <>
@@ -59,7 +59,7 @@ function GroupEvent(props) {
   const { groupEvents, groupId } = props;
   return (
     <Row>
-      {groupEvents.map((event) => (
+      {!groupEvents ? null : groupEvents.map((event) => (
           <Card className="event-card" key={event.eventId}>
             <Card.Title>{event.eventName}</Card.Title>
             <Badge className="Button" color="success">Going</Badge>
