@@ -35,4 +35,10 @@ export default function RemoveUser(props) {
       <Button onClick={removeUser}>Remove User</Button>
     )
   }
+  else {
+    return (
+      <>
+      </>
+    )
+  }
 }

@@ -5,15 +5,12 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 export default function SeeUsers(props) {
-  const { group, onUsers, currentRole } = props;
+  const { group, currentRole } = props;
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
 
-  const handleClose = () => {
-    setShow(false);
-    onUsers&&onUsers();
-  }
+  const handleClose = () => setShow(false);
 
   return (
     <>

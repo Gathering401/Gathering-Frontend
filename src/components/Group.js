@@ -101,6 +101,7 @@ export default function Group(props) {
               <AddUser groupId={groupId} />
               {"  "}
               <LeaveGroup groupId={groupId} userId={user.id} />
+              <SeeUsers group={group} currentRole={currentUser.roleString}/>
             </Card.Body>
           </Card>
       </div>
