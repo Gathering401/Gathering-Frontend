@@ -77,7 +77,7 @@ export default function Group(props) {
               <LeaveGroup groupId={groupId} userId={user.id} />
               <br/>
               <DeleteGroup groupId={groupId} />
-              <SeeUsers group={group} />
+              <SeeUsers group={group} currentRole={currentUser.roleString}/>
             </Card.Body>
           </Card>
         </div>

@@ -1,41 +1,48 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { Card, Col, Container, Row, Button } from 'react-bootstrap';
-import { useAuth } from '../context/auth';
+import React, { useState } from 'react';
+import RemoveUser from './RemoveUser';
+import ChangeRole from './ChangeRole';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export default function SeeUsers(props) {
-  const { group } = props;
-  const user = useAuth();
-  const userAPI = `${process.env.REACT_APP_API_URI}`;
-  const [showUsers, setShowUsers] = useState(false);
+  const { group, onUsers, currentRole } = props;
+  const [show, setShow] = useState(false);
 
-  async function seeUsers(e) {
-    e.preventDefault();
-    setShowUsers()
+  const handleShow = () => setShow(true);
+
+  const handleClose = () => {
+    setShow(false);
+    onUsers&&onUsers();
   }
 
   return (
-    <Container>
-      <Button onClick={seeUsers}>All Users</Button>
-      <UsersList groupUsers={group.groupUsers}/>
-    </Container>
-  )
-}
-
-function UsersList(props) {
-  const { groupUsers } = props;
-
-  return (
     <>
-      {
-        groupUsers.map(user => {
-          console.log(user);
-          <Row>
-            <Card>
-              <Card.Text>{user}</Card.Text>
-            </Card>
-          </Row>
-        })
-      }
+      <Button onClick={handleShow}>All Users</Button>
+      
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdropClassName="static"
+        keyboard={true}
+      >
+        <Modal.Header>
+          <Modal.Title>
+            {group.groupName} Users
+          </Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          {group.groupUsers.map(groupUser => (
+            <div key={`${groupUser.user.id} ${groupUser.group.id}`}>
+              <h4>{`${groupUser.user.firstName} ${groupUser.user.lastName}`}</h4>
+              <h4>Username: {groupUser.user.userName}</h4>
+              <h5>Role: {groupUser.roleString}</h5>
+              <RemoveUser groupUser={groupUser} currentRole={currentRole}/>
+              <ChangeRole groupUser={groupUser} currentRole={currentRole}/>
+            </div>
+          ))}
+        </Modal.Body>
+      </Modal>
     </>
   )
 }
