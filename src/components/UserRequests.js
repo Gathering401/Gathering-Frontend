@@ -28,6 +28,8 @@ export default function SeeUsers(props) {
         'Content-Type': 'application/json'
       }
     });
+    
+    handleClose();
 
     if(result.ok) {
       return true;
