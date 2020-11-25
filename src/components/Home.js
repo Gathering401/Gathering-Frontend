@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import SearchGroups from './SearchGroups';
 //import User from './User';
 import Groups from './Groups';
 
@@ -16,6 +17,7 @@ export default function Home() {
           </Col>
         </Row>
       </Container>
+      <SearchGroups />
     </>
   );
 }
