@@ -38,18 +38,34 @@ export default function SearchGroups() {
 
   const requestJoin = async (e) => {
     e.preventDefault();
-  }
-  
-  async function showDetails(e) {
-    e.preventDefault();
 
     const groupId = e.target.value;
-    const groupResponse = await fetch(`${userAPI}/Group/${groupId}`, {
+    const response = await fetch(`${userAPI}/Group/${groupId}/Request`, {
+      method: 'post',
       headers: {
         'Authorization': `Bearer ${user.token}`
       }
     });
-    const group = await groupResponse.json();
+
+    if(response.ok) {
+      return true;
+    }
+    const errors = await response.json();
+    console.log(errors);
+
+    return false;
+  }
+  
+  const showDetails = async (e) => {
+    e.preventDefault();
+
+    const groupId = e.target.value;
+    const response = await fetch(`${userAPI}/Group/${groupId}`, {
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+      }
+    });
+    const group = await response.json();
     console.log(group);
     setShow(false);
     setDetailsShow(true);
