@@ -8,6 +8,7 @@ import LeaveGroup from './LeaveGroup';
 import EventDetail from './EventDetail';
 import DeleteGroup from './DeleteGroup';
 import SeeUsers from './SeeUsers';
+import UserRequests from './UserRequests';
 import { Badge } from 'reactstrap';
 
 export default function Group(props) {
@@ -78,6 +79,7 @@ export default function Group(props) {
               <br/>
               <DeleteGroup groupId={groupId} />
               <SeeUsers group={group} currentRole={currentUser.roleString}/>
+              <UserRequests group={group} />
             </Card.Body>
           </Card>
         </div>
@@ -102,6 +104,7 @@ export default function Group(props) {
               {"  "}
               <LeaveGroup groupId={groupId} userId={user.id} />
               <SeeUsers group={group} currentRole={currentUser.roleString}/>
+              <UserRequests group={group} />
             </Card.Body>
           </Card>
       </div>
