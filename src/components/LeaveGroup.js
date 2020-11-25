@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import {useAuth} from '../context/auth';
 
@@ -31,7 +32,7 @@ export default function LeaveGroup(props) {
 
   return (
     <>
-      <Button onClick={handleSubmit}>Leave Group</Button>
+      <Button onClick={handleSubmit}><Link to="/" className="leave-group">Leave Group</Link></Button>
     </>
   )
 }

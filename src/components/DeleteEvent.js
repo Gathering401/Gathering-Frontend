@@ -5,7 +5,7 @@ import {useAuth} from '../context/auth';
 const userAPI = process.env.REACT_APP_API_URI;
 
 export default function DeleteEvent(props) {
-  const {group, eventId} = props;
+  const {group, eventId, close} = props;
   const {user} = useAuth();
 
   async function handleSubmit(e) {
@@ -23,6 +23,8 @@ export default function DeleteEvent(props) {
     });
 
     if(result.ok) {
+      close();
+      window.location.reload();
       return true;
     }
     const errors = await result.json();
